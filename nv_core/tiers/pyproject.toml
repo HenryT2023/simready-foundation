@@ -29,6 +29,7 @@
 members = [
     "simready_foundation_tier_aif",
     "simready_foundation_tier_core",
+    "simready_foundation_tier_pcb",
     "simready_foundation_tier_sensors",
 ]
 

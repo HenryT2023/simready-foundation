@@ -22,6 +22,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 VERSION_FILE = REPO_ROOT / "VERSION.md"
 
+# Feature branches publish alongside release docs, using the preview convention.
+_FEATURE_PREVIEWS = {"feature/pcb": "pcb-0.1.0"}
+
 # preview_<product>_<major>-<minor>-<patch>  e.g. preview_aif_0-1-0
 _PREVIEW_BRANCH_RE = re.compile(
     r"^preview_(?P<product>[a-z0-9]+)_(?P<version>\d+(?:-\d+)*)$",
@@ -54,6 +57,7 @@ def fetch_refs() -> None:
             "origin",
             "+refs/heads/release_*:refs/remotes/origin/release_*",
             "+refs/heads/preview_*:refs/remotes/origin/preview_*",
+            "+refs/heads/feature/pcb:refs/remotes/origin/feature/pcb",
             "--tags",
         ],
         cwd=REPO_ROOT,
@@ -66,7 +70,7 @@ def fetch_refs() -> None:
 def list_branch_refs() -> list[str]:
     fetch_refs()
     refs: set[str] = set()
-    for pattern in ("refs/remotes/origin/release_*", "refs/remotes/origin/preview_*"):
+    for pattern in ("refs/remotes/origin/release_*", "refs/remotes/origin/preview_*", "refs/remotes/origin/feature/pcb"):
         result = subprocess.run(
             ["git", "for-each-ref", "--format=%(refname:short)", pattern],
             cwd=REPO_ROOT,
@@ -97,6 +101,8 @@ def ref_to_version(ref: str) -> str:
 
     branch = ref_to_branch(ref)
 
+    if branch in _FEATURE_PREVIEWS:
+        return _FEATURE_PREVIEWS[branch]
     if branch.startswith("release_"):
         return branch.removeprefix("release_").replace("-", ".")
     if branch.startswith("preview_"):

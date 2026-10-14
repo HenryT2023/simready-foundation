@@ -63,6 +63,12 @@ the feature.
 | [Connection Points](FET_201-connection_points.md) *(capability)* | AIF | 0.1.0 / 0.2.0 | `FET201_AIF` |
 | [AIF Thermal Cooling](FET_202-thermal_cooling.md) | AIF | 0.1.0 / 0.2.0 | `FET202_AIF` |
 | [AIF Electrical](FET_203-electrical.md) | AIF | 0.1.0 / 0.2.0 | `FET203_AIF` |
+| [PCB Component Identity](FET_211_STANDARD.md) | STANDARD | 0.1.0 | `FET_211_STANDARD` |
+| [PCB Component Geometry](FET_212_STANDARD.md) | STANDARD | 0.1.0 | `FET_212_STANDARD` |
+| [PCB Board Geometry](FET_213_STANDARD.md) | STANDARD | 0.1.0 | `FET_213_STANDARD` |
+| [PCB USD Core](FET_214_STANDARD.md) | STANDARD | 0.1.0 | `FET_214_STANDARD` |
+| [PCB AOI Appearance](FET_215_STANDARD.md) | STANDARD | 0.1.0 | `FET_215_STANDARD` |
+| [PCB Delivery Package](FET_216_STANDARD.md) | STANDARD | 0.1.0 | `FET_216_STANDARD` |
 
 ```{toctree}
 :maxdepth: 1
@@ -131,6 +137,12 @@ AIF Core Metadata <FET_200-aif_metadata>
 Connection Points <FET_201-connection_points>
 AIF Thermal Cooling <FET_202-thermal_cooling>
 AIF Electrical <FET_203-electrical>
+PCB Component Identity <FET_211_STANDARD>
+PCB Component Geometry <FET_212_STANDARD>
+PCB Board Geometry <FET_213_STANDARD>
+PCB USD Core <FET_214_STANDARD>
+PCB AOI Appearance <FET_215_STANDARD>
+PCB Delivery Package <FET_216_STANDARD>
 Draft - Baseline Appearance Visualization <drafts/FET_006-baseline-appearance-visualization-feature-card>
 Draft - Physically Plausible Appearance Visualization <drafts/FET_006-physically-plausible-appearance-visualization-feature-card>
 Draft - Object Color Visualization <drafts/FET_010-object-color-visualization-feature-card>

@@ -1,0 +1,10 @@
+{
+  "comment": "Example package-file BOM (UO.013): the inventory of files a distributed board package contains. Referenced by board_min.usda's pcba:board:packageManifest.",
+  "package": "DEMO-BOARD-A",
+  "files": [
+    { "path": "board_min.usda", "role": "board_root" },
+    { "path": "protos/QFN8.usda", "role": "component_prototype" },
+    { "path": "protos/HDR2.usda", "role": "component_prototype" },
+    { "path": "package_manifest.json", "role": "manifest" }
+  ]
+}

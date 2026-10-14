@@ -1,0 +1,14 @@
+{
+  "id": "FET_214_STANDARD",
+  "version": "0.1.0",
+  "display_name": "PCB USD Core",
+  "path": "features/FET_214_STANDARD.html",
+  "requirements": [
+    "UO.001",
+    "UO.003",
+    "UO.006",
+    "UO.009",
+    "UO.010",
+    "UO.014"
+  ]
+}

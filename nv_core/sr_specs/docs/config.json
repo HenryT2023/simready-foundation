@@ -1,13 +1,16 @@
 {
 	"requirements_configs_path": "../config",
 	"requirements_paths": [
-		"../../tiers/simready_foundation_tier_core/simready/foundation/tier_core/capabilities"
+		"../../tiers/simready_foundation_tier_core/simready/foundation/tier_core/capabilities",
+		"../../tiers/simready_foundation_tier_pcb/simready/foundation/tier_pcb/capabilities"
 	],
 	"features_paths": [
-		"../../tiers/simready_foundation_tier_core/simready/foundation/tier_core/features"
+		"../../tiers/simready_foundation_tier_core/simready/foundation/tier_core/features",
+		"../../tiers/simready_foundation_tier_pcb/simready/foundation/tier_pcb/features"
 	],
 	"profiles_paths": [
-		"../../tiers/simready_foundation_tier_core/simready/foundation/tier_core/profiles"
+		"../../tiers/simready_foundation_tier_core/simready/foundation/tier_core/profiles",
+		"../../tiers/simready_foundation_tier_pcb/simready/foundation/tier_pcb/profiles"
 	],
 	"adapter_modules_path": "../../cip_specs/asset_handler_modules",
 	"spec_root": "../../sr_specs/docs",

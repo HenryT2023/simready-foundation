@@ -1,0 +1,15 @@
+{
+  "id": "FET_212_STANDARD",
+  "version": "0.1.0",
+  "display_name": "PCB Component Geometry",
+  "path": "features/FET_212_STANDARD.html",
+  "requirements": [
+    "CG.001",
+    "CG.002",
+    "CG.003",
+    "CG.005",
+    "CG.006",
+    "CG.007",
+    "CG.008"
+  ]
+}

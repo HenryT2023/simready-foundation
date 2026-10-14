@@ -8,6 +8,7 @@ on:
       - main
       - release_*
       - preview_*
+      - feature/pcb
     tags: ["v*"]
   workflow_dispatch:
     inputs:
@@ -16,7 +17,7 @@ on:
         required: false
         type: string
       branch_ref:
-        description: "Branch to build docs from (e.g. release_2026-04-1 or preview_my-feature)."
+        description: "Branch to build docs from (e.g. release_2026-04-1, preview_my-feature, or feature/pcb)."
         required: false
         type: string
 

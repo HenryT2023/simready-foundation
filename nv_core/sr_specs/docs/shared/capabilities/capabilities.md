@@ -18,3 +18,5 @@ Semantic Labels <semantic_labels/capability-semantic_labels>
 Dataset Taxonomies <dataset_taxonomies/capability-dataset_taxonomies>
 Packaging <packaging/packaging>
 AIF <aif/aif>
+PCB AOI <pcb_aoi/pcb_aoi>
+```

@@ -1,0 +1,12 @@
+{
+  "id": "FET_216_STANDARD",
+  "version": "0.1.0",
+  "display_name": "PCB Delivery Package",
+  "path": "features/FET_216_STANDARD.html",
+  "requirements": [
+    "UO.012",
+    "UO.013",
+    "UO.015",
+    "UO.016"
+  ]
+}

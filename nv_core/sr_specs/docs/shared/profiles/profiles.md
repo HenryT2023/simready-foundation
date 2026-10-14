@@ -28,6 +28,8 @@ This section lists the profiles from every SimReady Foundation [tier](../guides/
 | Open-Taxonomy-PascalVOC | 0.1.0 | Semantic labels constrained to the PASCAL VOC vocabulary | FET_000_STANDARD, FET_011_STANDARD, FET_043_STANDARD |
 | Open-Taxonomy-SUNRGBD | 0.1.0 | Semantic labels constrained to the SUN RGB-D vocabulary | FET_000_STANDARD, FET_011_STANDARD, FET_044_STANDARD |
 | Open-Taxonomy-ImageNet1K | 0.1.0 | Semantic labels constrained to the ImageNet-1K vocabulary | FET_000_STANDARD, FET_011_STANDARD, FET_045_STANDARD |
+| PCB-Assembly | 0.1.0 | A populated circuit board assembly (PCBA) as a USD asset, whatever produced it: component identity and geometry, board geometry, USD core, AOI appearance, delivery package | FET_211_STANDARD, FET_212_STANDARD, FET_213_STANDARD, FET_214_STANDARD, FET_215_STANDARD, FET_216_STANDARD |
+| PCB-Board | 0.1.0 | A circuit board as a USD asset, on its own (a bare board is validated with it; a populated board also passes): board geometry, USD core, AOI appearance, delivery package | FET_213_STANDARD, FET_214_STANDARD, FET_215_STANDARD, FET_216_STANDARD |
 
 The packaging profiles validate a package folder and its sidecar JSON files
 rather than the contents of a USD stage.
@@ -35,6 +37,8 @@ rather than the contents of a USD stage.
 ```{toctree}
 :maxdepth: 1
 
+PCB Assembly <pcb_assembly>
+PCB Board <pcb_board>
 Robotics Prop <robotics-prop>
 Robot Body <robot-body>
 Robot Gripper <robot-gripper>

@@ -185,6 +185,12 @@ Profiles are the top-level contracts between asset creators and consumers. Each 
 | **Robot-Gripper** | Consolidated robot gripper contract with optional runtime variants |
 | **Open-Taxonomy-\*** | Closed-vocabulary semantic-label contracts for COCO, Cityscapes, ADE20K, PASCAL VOC, SUN RGB-D, and ImageNet-1K |
 | **Package / Package-NoBOM / Package-Candidate** | Package creation, package validation, and source-folder preflight contracts |
+| **PCB-Assembly / PCB-Board** | Populated circuit board assemblies and boards; see the [PCB development tier](nv_core/tiers/simready_foundation_tier_pcb/README.md) |
+
+PCB development lives on `feature/pcb`. Pushes to that branch build and publish
+separate [PCB 0.1.0 preview docs](https://nvidia.github.io/simready-foundation/pcb-0.1.0/),
+using the same versioned deployment as the AIF preview. The deployment leaves
+`latest/` and release documentation intact.
 
 ### Use cases
 

@@ -1,0 +1,16 @@
+{
+  "id": "FET_213_STANDARD",
+  "version": "0.1.0",
+  "display_name": "PCB Board Geometry",
+  "path": "features/FET_213_STANDARD.html",
+  "requirements": [
+    "BG.001",
+    "BG.002",
+    "BG.003",
+    "BG.005",
+    "BG.007",
+    "BG.008",
+    "BG.010",
+    "BG.012"
+  ]
+}

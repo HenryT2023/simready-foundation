@@ -1,0 +1,15 @@
+{
+  "id": "FET_211_STANDARD",
+  "version": "0.1.0",
+  "display_name": "PCB Component Identity",
+  "path": "features/FET_211_STANDARD.html",
+  "requirements": [
+    "CI.001",
+    "CI.002",
+    "CI.003",
+    "CI.004",
+    "CI.005",
+    "CI.006",
+    "UO.008"
+  ]
+}

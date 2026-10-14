@@ -1,0 +1,10 @@
+# PCB Board Base profile: the board-level subset of PCB-Assembly - board geometry, USD
+# core conventions, appearance and delivery packaging, without the two placed-component
+# features. A bare (unpopulated) board is validated with it; a populated board also passes it.
+[PCB-Board]
+"0.1.0" = {features = [
+    {"FET_213_STANDARD" = {version = "0.1.0"}}, # "PCB Board Geometry"
+    {"FET_214_STANDARD" = {version = "0.1.0"}}, # "PCB USD Core"
+    {"FET_215_STANDARD" = {version = "0.1.0"}}, # "PCB AOI Appearance"
+    {"FET_216_STANDARD" = {version = "0.1.0"}}, # "PCB Delivery Package"
+]}

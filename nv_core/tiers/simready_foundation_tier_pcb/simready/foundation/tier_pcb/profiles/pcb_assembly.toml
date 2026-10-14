@@ -1,0 +1,12 @@
+# PCB Assembly profile: a populated circuit board assembly (PCBA) as a USD asset - board plus
+# every placed component, whatever produced it. Composes all six PCB features, whose 38
+# CI/CG/BG/UO requirements are all enforced by the tier's validators.
+[PCB-Assembly]
+"0.1.0" = {features = [
+    {"FET_211_STANDARD" = {version = "0.1.0"}}, # "PCB Component Identity"
+    {"FET_212_STANDARD" = {version = "0.1.0"}}, # "PCB Component Geometry"
+    {"FET_213_STANDARD" = {version = "0.1.0"}}, # "PCB Board Geometry"
+    {"FET_214_STANDARD" = {version = "0.1.0"}}, # "PCB USD Core"
+    {"FET_215_STANDARD" = {version = "0.1.0"}}, # "PCB AOI Appearance"
+    {"FET_216_STANDARD" = {version = "0.1.0"}}, # "PCB Delivery Package"
+]}
