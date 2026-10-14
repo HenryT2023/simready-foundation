@@ -1,0 +1,165 @@
+{
+    "capability": {
+        "id": "board_geometry",
+        "version": "1.0.0",
+        "requirements": [
+            {
+                "code": "BG.005",
+                "version": null,
+                "name": "pad-number",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PadNumberChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/pad-number.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/pad-number.md"
+                },
+                "message": "Every `board_pad` prim MUST carry `pcba:board:padNumber` \u2014 the pad's own designation within its\nfootprint \u2014 present **even on an unoccupied pad**. On an occupied pad it should equal that\npad's `pcba:board:componentPinNumber`.This page follows PCBA to USD Input Contract **1.0.2**, sections 6 and 10.",
+                "examples": []
+            },
+            {
+                "code": "BG.008",
+                "version": null,
+                "name": "paste-side",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PasteSideChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/paste-side.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/paste-side.md"
+                },
+                "message": "When solder paste geometry is supplied, the side of each `board_paste` deposit MUST be\ndeterminable: either `pcba:board:solderLayer` (`top` \\| `bottom`) is authored on the deposit,\nor it derives from a containing layer prim's `pcba:layer:side`.This page follows PCBA to USD Input Contract **1.0.2**, sections 10 and 11.1.",
+                "examples": []
+            },
+            {
+                "code": "BG.001",
+                "version": null,
+                "name": "board-thickness",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`BoardThicknessChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/board-thickness.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/board-thickness.md"
+                },
+                "message": "The board-root prim MUST carry `pcba:board:thicknessMm`, the real **pressed** (post-lamination)\nboard thickness in millimetres, and the `board_substrate` mesh MUST be a solid slab of that\nthickness \u2014 a zero-thickness plane is invalid.This page follows PCBA to USD Input Contract **1.0.2**, sections 5 and 11.",
+                "examples": []
+            },
+            {
+                "code": "BG.007",
+                "version": null,
+                "name": "paste-association",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PasteAssociationChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/paste-association.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/paste-association.md"
+                },
+                "message": "When solder paste geometry is supplied, each `board_paste` deposit MUST name the contact it\nserves with the same pair a pad or barrel uses: `pcba:board:refdes` +\n`pcba:board:componentPinNumber`. The `pcba:board:pasteFor` relationship is a SHOULD \u2014 a direct\nhandle when the component prim is in the file \u2014 not the association itself.This page follows PCBA to USD Input Contract **1.0.2**, sections 6 and 10.",
+                "examples": []
+            },
+            {
+                "code": "BG.010",
+                "version": null,
+                "name": "hole-and-pad-geometry",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`HoleGeometryChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/hole-and-pad-geometry.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/hole-and-pad-geometry.md"
+                },
+                "message": "Every `board_barrel` MUST describe its plated-through-hole geometry \u2014 `pcba:board:holeCenterMm`,\n`pcba:board:holeShape`, `pcba:board:holeDimsMm` \u2014 **or** author one of the two derivable forms\nthe contract allows (a drill radius for a round hole; shape + dims + the contour mesh for a\nslot). `pcba:board:padContour` on a `board_pad` is a SHOULD: the pad mesh itself is the\nauthoritative exposed-pad extent.This page follows PCBA to USD Input Contract **1.0.2**, sections 6 and 10. The carrier of\nhole data is the `board_barrel`, not `board_hole`; there is no `holeSide` attribute.",
+                "examples": []
+            },
+            {
+                "code": "BG.012",
+                "version": null,
+                "name": "hole-occupancy",
+                "compatibility": "open-usd",
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`HoleOccupancyChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/hole-occupancy.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/hole-occupancy.md"
+                },
+                "message": "Every `board_pad` and `board_barrel` MUST declare `pcba:board:occupied`, or declare\nthat occupancy is unresolved using the provenance convention below. An occupied\nsite names its component terminal with **`pcba:board:refdes` +\n`pcba:board:componentPinNumber`**. This applies to SMT pads as well as THT joints.This page follows PCBA to USD Input Contract **1.0.2**, sections 6 and 10.\n`board_hole` is optional bookkeeping; occupancy and association belong on the\nactual pad or barrel. There are no `holeSide` or `plated` fields.",
+                "examples": []
+            },
+            {
+                "code": "BG.002",
+                "version": null,
+                "name": "copper-mask-geometry",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`BoardLayersChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/copper-mask-geometry.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/copper-mask-geometry.md"
+                },
+                "message": "The board MUST carry copper-layer geometry and solder-mask geometry with role-consistent\nmaterials: at least one `Mesh` with `pcba:mesh:role = \"board_copper\"` and at least one with\n`pcba:mesh:role = \"board_mask\"`, so the rendered board has production-accurate colour and finish.This page follows PCBA to USD Input Contract **1.0.2**, sections 5 and 9.",
+                "examples": []
+            },
+            {
+                "code": "BG.003",
+                "version": null,
+                "name": "hole-plating",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PlatedBarrelChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/hole-plating.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/hole-plating.md"
+                },
+                "message": "Every plated hole at an **occupied through-hole joint** MUST be backed by a `Mesh` with\n`pcba:mesh:role = \"board_barrel\"` \u2014 the copper plating through the board thickness. This\nincludes `press_fit` parts. The barrel carries the hole data and the board-side association\n(`pcba:board:refdes` + `pcba:board:componentPinNumber`) for that joint.This page follows PCBA to USD Input Contract **1.0.2**, sections 6 and 10.\nThere is no `pcba:board:plated` flag; `board_hole` prims are optional bookkeeping.",
+                "examples": []
+            },
+            {
+                "code": "BG.014",
+                "version": null,
+                "name": "paste-in-hole",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "_Not yet implemented_",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/board_geometry/requirements/paste-in-hole.html",
+                    "internal_path": "capabilities/pcb_aoi/board_geometry/requirements/paste-in-hole.md"
+                },
+                "message": "For through-hole components the paste association MUST be **empty** unless the paste-in-hole\n(pin-in-paste / through-hole reflow) process applies. When it does, the deposit is a normal\n`board_paste` prim naming its contact with `pcba:board:refdes` + `pcba:board:componentPinNumber`\nand carrying its side, exactly like SMT paste.This page follows PCBA to USD Input Contract **1.0.2**, sections 10 and 12.",
+                "examples": []
+            }
+        ],
+        "metadata": {
+            "path": "capabilities/pcb_aoi/board_geometry/capability-board_geometry.html",
+            "internal_path": "capabilities/pcb_aoi/board_geometry/capability-board_geometry.md"
+        }
+    }
+}

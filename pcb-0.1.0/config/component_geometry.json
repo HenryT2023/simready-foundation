@@ -1,0 +1,216 @@
+{
+    "capability": {
+        "id": "component_geometry",
+        "version": "1.0.0",
+        "requirements": [
+            {
+                "code": "CG.012",
+                "version": null,
+                "name": "per-surface-material",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`SurfaceMaterialChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/per-surface-material.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/per-surface-material.md"
+                },
+                "message": "`pcba:mesh:matClass` (`plastic metal ceramic solder mask copper silkscreen other`) names a\nmesh's material class alongside its bound material. It MUST be authored explicitly on `pkg_*`\nand `fixture_*` meshes, whose material is genuinely ambiguous. On `board_*` meshes it **derives\nfrom the role** and need not be authored; any authored value must match the derivation.This page follows PCBA to USD Input Contract **1.0.2**, section 9.",
+                "examples": []
+            },
+            {
+                "code": "CG.006",
+                "version": null,
+                "name": "pin-pitch",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PinPitchChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/pin-pitch.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/pin-pitch.md"
+                },
+                "message": "`pcba:component:pinPitchMm` (a float, in millimetres) gives the centre-to-centre\nspacing between adjacent contacts. It is required when meaningful and is omitted\nfor 2-terminal passives.",
+                "examples": []
+            },
+            {
+                "code": "CG.002",
+                "version": null,
+                "name": "anchor",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`AnchorChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/anchor.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/anchor.md"
+                },
+                "message": "The component asset root MUST sit at a declared anchor named by\n`pcba:component:anchor` (`body_centroid`, `pin1`, `footprint_origin`, or\n`mesh_origin`). `pcba:component:bodyCentroidLocal` and `pcba:mesh:originOffset`\ntogether give deterministic placement when the mesh origin is off the body.",
+                "examples": []
+            },
+            {
+                "code": "CG.010",
+                "version": null,
+                "name": "markings",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`MarkingsChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/markings.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/markings.md"
+                },
+                "message": "`pcba:component:markings` (a string) records the visible marking text on the\ncomponent. It is required when markings are present and is the ground truth for\nOCR and wrong-part inspection.",
+                "examples": []
+            },
+            {
+                "code": "CG.009",
+                "version": null,
+                "name": "polarity",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PolarityChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/polarity.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/polarity.md"
+                },
+                "message": "`pcba:component:polarityType` (a token) names how a polarized part indicates its\npolarity. It is required for polarized parts and is the ground truth for\nreverse-polarity defects. Pin-1 / polarity / marking features MUST be authored as\n**standalone geometry** (`pkg_marking`), never baked into a texture.",
+                "examples": []
+            },
+            {
+                "code": "CG.003",
+                "version": null,
+                "name": "body-height",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`BodyHeightChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/body-height.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/body-height.md"
+                },
+                "message": "Every electrical component MUST carry `pcba:component:heightMm` (the Z extent of the\ncomponent in millimetres, greater than zero). The body mesh should also carry a standard USD\n`extent`, which the board-side geometric cross-checks rely on. Together they provide height and\nworld-bounds ground truth.This page follows PCBA to USD Input Contract **1.0.2**, section 8.",
+                "examples": []
+            },
+            {
+                "code": "CG.008",
+                "version": null,
+                "name": "pin1-position",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`Pin1PositionChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/pin1-position.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/pin1-position.md"
+                },
+                "message": "`pcba:component:pin1PosMm` (a `point3f`) gives the actual offset of pin 1 from the\ncomponent anchor. It is required for keyed or orientation-sensitive parts and is\nthe ground truth for pin-1 orientation defects.",
+                "examples": []
+            },
+            {
+                "code": "CG.007",
+                "version": null,
+                "name": "pin-geometry",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PinGeometryChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/pin-geometry.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/pin-geometry.md"
+                },
+                "message": "Every pin prim MUST carry `pcba:pin:number` \u2014 a stable id, **unique within the component** \u2014 and\n`pcba:pin:solderable` (`bool`: does this contact form a solder joint?). `pcba:pin:crossSection`,\n`pcba:pin:terminalType`, and `pcba:pin:designator` are OPTIONAL and validated when authored.\nThe board side never authors `pcba:pin:number`: a pad or barrel names a pin with\n`pcba:board:componentPinNumber`.This page follows PCBA to USD Input Contract **1.0.2**, section 10.",
+                "examples": []
+            },
+            {
+                "code": "CG.011",
+                "version": null,
+                "name": "nominal-appearance",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`AppearanceChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/nominal-appearance.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/nominal-appearance.md"
+                },
+                "message": "Every component MUST carry a representative nominal appearance:\n`pcba:component:bodyColorNominal` (a `color3f`), `pcba:component:finishNominal` (a\ntoken: `matte`, `gloss`, `metallic`, `other`), and\n`pcba:component:materialClassNominal` (a token: `plastic`, `metal`, `ceramic`,\n`solder`, `other`).",
+                "examples": []
+            },
+            {
+                "code": "CG.018",
+                "version": null,
+                "name": "press-fit-state",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "_Not yet implemented_",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/press-fit-state.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/press-fit-state.md"
+                },
+                "message": "A `press_fit` part is a solderless through-hole part: its holes are plated, its barrels are\nreal and required, and the camera looks down them. Which of its contacts take solder \u2014 and\ntherefore which solder-defect classes apply \u2014 is determined **per pin** by `pcba:pin:solderable`,\nnot by the part-level process class.This page follows PCBA to USD Input Contract **1.0.2**, sections 6, 10 and 12.",
+                "examples": []
+            },
+            {
+                "code": "CG.005",
+                "version": null,
+                "name": "pin-count",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PinCountChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/pin-count.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/pin-count.md"
+                },
+                "message": "Every electrical component MUST carry `pcba:component:pinCount` (an integer, greater than\nzero), and it MUST equal the number of pin prims on the component. It is the contact enumeration the\nsolder simulation relies on.",
+                "examples": []
+            },
+            {
+                "code": "CG.001",
+                "version": null,
+                "name": "placement",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PlacementChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_geometry/requirements/placement.html",
+                    "internal_path": "capabilities/pcb_aoi/component_geometry/requirements/placement.md"
+                },
+                "message": "Every placed component prim MUST carry `pcba:component:side` (`top` \\| `bottom`). Electrical\nparts MUST also carry `pcba:component:nominalPosMm` (board-local x, y in mm) and\n`pcba:component:nominalRotationDeg` (rotation about the board normal Z). For `fiducial` and\n`mechanical` placements the pose fields are SHOULD.This page follows PCBA to USD Input Contract **1.0.2**, sections 8 and 8.1.",
+                "examples": []
+            }
+        ],
+        "metadata": {
+            "path": "capabilities/pcb_aoi/component_geometry/capability-component_geometry.html",
+            "internal_path": "capabilities/pcb_aoi/component_geometry/capability-component_geometry.md"
+        }
+    }
+}

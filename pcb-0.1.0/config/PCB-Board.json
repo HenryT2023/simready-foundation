@@ -1,0 +1,32 @@
+{
+    "profile": {
+        "id": "PCB-Board",
+        "version": "0.1.0",
+        "name": null,
+        "description": null,
+        "requirements": [],
+        "capabilities": [],
+        "features": [
+            {
+                "feature": "FET_213_STANDARD@0.1.0",
+                "optional": false
+            },
+            {
+                "feature": "FET_214_STANDARD@0.1.0",
+                "optional": false
+            },
+            {
+                "feature": "FET_215_STANDARD@0.1.0",
+                "optional": false
+            },
+            {
+                "feature": "FET_216_STANDARD@0.1.0",
+                "optional": false
+            }
+        ],
+        "metadata": {
+            "path": "profiles/pcb_board.html",
+            "internal_path": "profiles/pcb_board.md"
+        }
+    }
+}

@@ -1,0 +1,233 @@
+{
+    "capability": {
+        "id": "usd_organization",
+        "version": "1.0.0",
+        "requirements": [
+            {
+                "code": "UO.014",
+                "version": null,
+                "name": "origin-convention",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`OriginConventionChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/origin-convention.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/origin-convention.md"
+                },
+                "message": "The board root MUST declare `pcba:board:originConvention` \u2014 how the board's zero was chosen:\n`cad_bbox_lower_left`, `fiducial_f1`, `mounting_hole`, `datum_explicit`, or `unspecified`. When\nit is `datum_explicit`, `pcba:board:originPointMm` MUST state where the datum is.\n`pcba:board:originLabel` SHOULD name the datum feature.This page follows PCBA to USD Input Contract **1.0.2**, section 11.",
+                "examples": []
+            },
+            {
+                "code": "UO.008",
+                "version": null,
+                "name": "registries",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`RegistriesChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/registries.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/registries.md"
+                },
+                "message": "The board SHOULD expose a component registry: a `Registries` scope carrying\n`rel pcba:board:members` that targets **every placed component on the board, all mount\nclasses**, so a consumer can enumerate parts without a full stage traversal. The registry is\nan **index, not a source of truth**.This page follows PCBA to USD Input Contract **1.0.2**, section 3.",
+                "examples": []
+            },
+            {
+                "code": "UO.012",
+                "version": null,
+                "name": "packaging-relative",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`RelativeReferencesChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/packaging-relative.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/packaging-relative.md"
+                },
+                "message": "All `references` and `payloads` MUST use **relative** asset paths and nothing may point outside\nthe package. The board is **one asset, placed \u2014 never duplicated**: a panel references the board\nonce per position, and every repeated component references a shared prototype with\n`instanceable = true`.This page follows PCBA to USD Input Contract **1.0.2**, section 4.",
+                "examples": []
+            },
+            {
+                "code": "UO.017",
+                "version": null,
+                "name": "role-material",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`RoleMaterialConsistencyChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/role-material.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/role-material.md"
+                },
+                "message": "Where a mesh's `pcba:mesh:role` determines its material class, the surface's material\nMUST agree with that class. A copper-role surface bound to a solder-mask material (or\nvice versa) is a defect: the role and the appearance disagree about what the surface\nphysically is.",
+                "examples": []
+            },
+            {
+                "code": "UO.009",
+                "version": null,
+                "name": "mesh-role",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`MeshRoleChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/mesh-role.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/mesh-role.md"
+                },
+                "message": "Every `Mesh` on the board MUST carry `pcba:mesh:role`, a token from the contract vocabulary that\nnames what the geometry *is*. The role is **authoritative** \u2014 a prim name may supplement it but\nmust never replace it.This page follows PCBA to USD Input Contract **1.0.2**, section 9.",
+                "examples": []
+            },
+            {
+                "code": "UO.003",
+                "version": null,
+                "name": "stage-layout",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`StageLayoutChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/stage-layout.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/stage-layout.md"
+                },
+                "message": "The board body MUST be present as a `Mesh` with `pcba:mesh:role = \"board_substrate\"`. Beyond\nthat, the contract describes a **desirable** stage shape \u2014 layers grouped by side, components,\ncopper, paste, holes, registries \u2014 but does not mandate it: an exporter that satisfies every\nrequirement with a different arrangement is conformant. Discovery is by role and attribute,\nnever by prim name.This page follows PCBA to USD Input Contract **1.0.2**, section 3.",
+                "examples": []
+            },
+            {
+                "code": "UO.011",
+                "version": null,
+                "name": "material-binding",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`MaterialBindingChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/material-binding.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/material-binding.md"
+                },
+                "message": "Renderable meshes SHOULD carry a bound material so the board renders with its nominal\nappearance. Board copper and mask geometry with production-accurate materials is required by\n[BG.002](/capabilities/pcb_aoi/board_geometry/requirements/copper-mask-geometry); the bound\nmaterial's class must agree with the mesh role\n([UO.017](/capabilities/pcb_aoi/usd_organization/requirements/role-material)).This page follows PCBA to USD Input Contract **1.0.2**, sections 3, 5 and 9.",
+                "examples": []
+            },
+            {
+                "code": "UO.015",
+                "version": null,
+                "name": "provenance",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`ProvenanceChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/provenance.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/provenance.md"
+                },
+                "message": "The board root MUST carry `pcba:board:generatorVersion` and `pcba:board:contentHash`, both\nnon-empty strings. Together they record which exporter produced the board and give a content\nhash of the referenced assets for integrity verification.This page follows PCBA to USD Input Contract **1.0.2**, section 11.",
+                "examples": []
+            },
+            {
+                "code": "UO.010",
+                "version": null,
+                "name": "namespace",
+                "compatibility": "open-usd",
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`NamespaceChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/namespace.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/namespace.md"
+                },
+                "message": "Author PCB contract metadata under **`pcba:`**, with colon-delimited scopes and\nlower-camelCase leaf names. Use ordinary custom USD attributes: no custom schema,\nschema fallback, or plugin is required. Other domains' properties retain their\nown namespaces.This page follows PCBA to USD Input Contract **1.0.2**, sections 1, 11 and 14.",
+                "examples": []
+            },
+            {
+                "code": "UO.006",
+                "version": null,
+                "name": "stage-conventions",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`StageConventionsChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/stage-conventions.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/stage-conventions.md"
+                },
+                "message": "The board stage MUST use `metersPerUnit = 0.001` (mm) and `upAxis = \"Z\"`, with **no\ncompensating root scale or rotation** on the default prim. The board lies in the **XY plane with\n+Z as the board normal**: component height is +Z, `pcba:component:heightMm` is the Z extent, and\n`pcba:component:nominalRotationDeg` is about Z.This page follows PCBA to USD Input Contract **1.0.2**, section 2.",
+                "examples": []
+            },
+            {
+                "code": "UO.001",
+                "version": null,
+                "name": "board-root",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`BoardRootChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/board-root.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/board-root.md"
+                },
+                "message": "The board asset MUST have a single `defaultPrim` \u2014 its **name is free** \u2014 and MUST contain a\nboard-root prim discoverable by its `pcba:board:*` attributes, which carry the board-level\nmetadata (provenance, packaging, thickness, origin convention). The board root MAY be the\ndefault prim but need not be.This page follows PCBA to USD Input Contract **1.0.2**, sections 2, 3 and 11.",
+                "examples": []
+            },
+            {
+                "code": "UO.013",
+                "version": null,
+                "name": "package-manifest",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PackageManifestChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/package-manifest.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/package-manifest.md"
+                },
+                "message": "A distributed board package MUST author `pcba:board:packageManifest` (an `asset`) on\nthe board-root prim \u2014 an inventory of the packaged files. This is the **package-file\nBOM**, distinct from the CI.007 component manifest.",
+                "examples": []
+            },
+            {
+                "code": "UO.016",
+                "version": null,
+                "name": "file-naming",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`FileNamingChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/usd_organization/requirements/file-naming.html",
+                    "internal_path": "capabilities/pcb_aoi/usd_organization/requirements/file-naming.md"
+                },
+                "message": "Asset file names SHOULD be clean ASCII with no spaces and no parentheses, so USD asset references\nand downstream tooling resolve reliably across platforms. (Prim and attribute names must be valid\nidentifiers regardless.)This page follows PCBA to USD Input Contract **1.0.2**, section 2.",
+                "examples": []
+            }
+        ],
+        "metadata": {
+            "path": "capabilities/pcb_aoi/usd_organization/capability-usd_organization.html",
+            "internal_path": "capabilities/pcb_aoi/usd_organization/capability-usd_organization.md"
+        }
+    }
+}

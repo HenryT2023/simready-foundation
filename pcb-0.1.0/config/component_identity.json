@@ -1,0 +1,131 @@
+{
+    "capability": {
+        "id": "component_identity",
+        "version": "1.0.0",
+        "requirements": [
+            {
+                "code": "CI.002",
+                "version": null,
+                "name": "component-type",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`ComponentTypeChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/component-type.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/component-type.md"
+                },
+                "message": "Every electrical component prim MUST carry `pcba:component:type`, a token from\n`resistor capacitor inductor led diode transistor connector crystal switch ic other`. It is\nauthored / classified \u2014 **not inferred from the refdes prefix**.This page follows PCBA to USD Input Contract **1.0.2**, sections 8 and 8.1.",
+                "examples": []
+            },
+            {
+                "code": "CI.003",
+                "version": null,
+                "name": "process-class",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`ProcessClassChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/process-class.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/process-class.md"
+                },
+                "message": "Every placed component prim MUST carry `pcba:component:processClass` \u2014 **how the part is\nmounted** \u2014 from `SMT through_hole press_fit mechanical fiducial Mixed`. A `Mixed` part MUST\nalso list its real mount technologies in `pcba:component:processClasses`. Package families\n(BGA, LGA, QFN, \u2026) are not mount methods; they belong in `packageType`.This page follows PCBA to USD Input Contract **1.0.2**, sections 8, 8.1 and 12.",
+                "examples": []
+            },
+            {
+                "code": "CI.006",
+                "version": null,
+                "name": "part-identity",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PartIdentityChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/part-identity.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/part-identity.md"
+                },
+                "message": "Part identity is two independent groups: `pcba:component:mpn` + `pcba:component:manufacturer`\n(the **manufacturer's** part identity) and `pcba:component:value` + `pcba:component:tolerance`\n(the **electrical requirement** set by the designer). Both are CONDITIONAL: author them when\nknown and use null / empty \u2014 never an invented value \u2014 where not. `pcba:component:customerPartNumber`\n(the board owner's internal part number) is also CONDITIONAL and often the only identity present\nat design time.This page follows PCBA to USD Input Contract **1.0.2**, section 8.",
+                "examples": []
+            },
+            {
+                "code": "CI.001",
+                "version": null,
+                "name": "refdes-identity",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`RefdesChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/refdes-identity.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/refdes-identity.md"
+                },
+                "message": "Every electrical component MUST carry `pcba:component:refdes`, the reference designator, unique\n**within one board**. `fiducial` and `mechanical` placements SHOULD carry one; when they do not,\nthey MUST carry `pcba:component:instanceId` so the placement stays addressable. A placed\ncomponent MUST be discoverable by at least one of `refdes`, `instanceId`, or `processClass` \u2014\nnever by prim name.This page follows PCBA to USD Input Contract **1.0.2**, sections 3, 8 and 8.1.",
+                "examples": []
+            },
+            {
+                "code": "CI.004",
+                "version": null,
+                "name": "package-type",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`PackageTypeChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/package-type.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/package-type.md"
+                },
+                "message": "Every electrical component SHOULD carry `pcba:component:packageType` \u2014 a **string** naming the\npackage designation that identifies a specific physical body: a published standard (JEDEC,\nJEITA, EIA, IEC \u2014 `QFN-48`, `0402`, `DIP-8`, `TO-99`) or, failing that, the manufacturer's\npackage designation. Not a lead-form or family word.This page follows PCBA to USD Input Contract **1.0.2**, section 8.",
+                "examples": []
+            },
+            {
+                "code": "CI.007",
+                "version": null,
+                "name": "component-manifest",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "_Not yet implemented_",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/component-manifest.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/component-manifest.md"
+                },
+                "message": "The board MUST provide a component manifest: one record per placed component linking its BOM\nidentity, its footprint, and its component asset. This is realized **without a separate sidecar**\n\u2014 the per-instance `pcba:component:*` attributes plus the prim's prototype `reference` are that\nrecord, distributed across the stage, and the `pcba:board:members` registry indexes it.This page follows PCBA to USD Input Contract **1.0.2**, sections 3, 4 and 8.",
+                "examples": []
+            },
+            {
+                "code": "CI.005",
+                "version": null,
+                "name": "footprint-id",
+                "compatibility": null,
+                "tags": [
+                    "unknown"
+                ],
+                "validator": "`FootprintIdChecker`",
+                "parameters": [],
+                "metadata": {
+                    "path": "capabilities/pcb_aoi/component_identity/requirements/footprint-id.html",
+                    "internal_path": "capabilities/pcb_aoi/component_identity/requirements/footprint-id.md"
+                },
+                "message": "Every electrical component MUST carry `pcba:component:footprintId`, identifying the\n**footprint** \u2014 the set of pads (and holes, for THT) the part lands on \u2014 in the source CAD\nlibrary. When that id is source-specific, the prim MUST also carry\n`pcba:component:sourceOrigin`, which says where the footprint came from and therefore how far\nto trust it.This page follows PCBA to USD Input Contract **1.0.2**, sections 1.1 and 8.",
+                "examples": []
+            }
+        ],
+        "metadata": {
+            "path": "capabilities/pcb_aoi/component_identity/capability-component_identity.html",
+            "internal_path": "capabilities/pcb_aoi/component_identity/capability-component_identity.md"
+        }
+    }
+}
