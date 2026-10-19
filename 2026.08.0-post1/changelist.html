@@ -1,0 +1,1752 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Release notes &#8212; Content Capabilities</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/_style.css?v=e1c02e80" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/tags.css?v=03faa5c8" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+
+
+    <script src="_static/documentation_options.js?v=07401e81"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'changelist';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://nvidia.github.io/simready-foundation/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2026.08.0-post1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Requirements Index" href="indexes/requirements_index.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2026.08.0-post1" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="auto">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="Content Capabilities - Home"/>
+    <img src="_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="Content Capabilities - Home"/>
+  
+  
+    <p class="title logo__title">Content Capabilities</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+
+
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-4"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-4"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-4"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-4">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="Content Capabilities - Home"/>
+    <img src="_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="Content Capabilities - Home"/>
+  
+  
+    <p class="title logo__title">Content Capabilities</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+
+
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-5"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-5"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-5"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-5">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-6"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-6"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-6"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-6">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="guides/guides.html">Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/tiers.html">SimReady Foundation Tiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/foundation_pypi.html">SimReady Foundation PyPI Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/validate_workflow.html">SimReady Validation Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/semantic_labels/semantic_labels.html">Semantic Labels Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/adding_a_custom_taxonomy.html">Adding a Custom Taxonomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/packaging_workflow.html">SimReady Packaging Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/thumbnail_guidelines.html">Thumbnail Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/acceptance_workflow.html">SimReady Acceptance Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/multiphysics_solvers.html">Multiple Physics Solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/features/features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/feature_adapters/feature_adapters.html">Feature Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/profiles/profiles.html">Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="guides/benchmark/benchmark.html">SimReady Benchmark</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/benchmark/overview.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/benchmark/pipeline.html">Pipeline and Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/benchmark/running.html">Running Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/benchmark/reading-reports.html">Reading Reports</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="guides/benchmark/tests/tests.html">Tests Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet001-visual.html">FET001 Visual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet003-physics.html">FET003 Physics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet004-multibody.html">FET004 Multibody</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet005-grasp.html">FET005 Grasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet006-materials.html">FET006 Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet010-display-color.html">FET010 Display Color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet011-semantic-labels.html">FET011 Semantic Labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet022-driven-joints.html">FET022 Driven Joints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/fet028-gripper.html">FET028 Gripper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/authoring.html">Authoring runtime tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/tests/experimental.html">Experimental and disabled tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="guides/benchmark/sensor-tests/tests.html">Sensor Tests Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/sensor-tests/fet034-imu-sensors.html">FET034 IMU Sensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/sensor-tests/fet035-render-products.html">FET035 Render Products</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/sensor-tests/fet036-rtx-sensors.html">FET036 RTX Sensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/benchmark/sensor-tests/fet037-joint-sensors.html">FET037 Joint Sensors</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/visual_materials/visual_materials.html">Visual Materials Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/SimReady_learning_workflow.html">SimReady Learning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/naming_conventions.html">Naming Conventions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="guides/development.html">Development Workflows</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/features_expansion_workflow.html">Features Expansion Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/profiles_validation_workflow.html">Profiles Validation Workflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="capabilities/capabilities.html">Capabilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/core/core.html">Core</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/core/sim_ready/capability-sim_ready.html">SimReady</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/sim_ready/requirements.html">SimReady Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/sim_ready/requirements/metadata-whitelist.html">metadata-whitelist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/sim_ready/requirements/thumbnail-exist.html">Thumbnail Exist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/sim_ready/requirements/nested-simready-metadata.html">nested-simready-metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/sim_ready/requirements/metadata-union.html">metadata-union</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/core/units/capability-units.html">Units</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/units/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/core/atomic_asset/capability-atomic_asset.html">Atomic Asset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/atomic_asset/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/atomic_asset/creators.html">Creators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/core/naming_paths/capability-naming_paths.html">Naming and Paths</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements.html">Naming and Paths Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/prim-naming-convention.html">prim-naming-convention</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/file-naming-convention.html">file-naming-convention</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/directory-structure.html">directory-structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/path-length-limits.html">path-length-limits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/asset-folder-structure.html">asset-folder-structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/metadata-location.html">metadata-location</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/naming_paths/requirements/relative-paths.html">relative-paths</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/core/runtime_variants/capability-runtime_variants.html">Runtime Variants</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements.html">Runtime Variants Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/physx-variant-set.html">physx-variant-set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/physx-runtime-payload.html">physx-runtime-payload</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/physx-variant-metadata.html">physx-variant-metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/newton-variant-set.html">newton-variant-set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/newton-runtime-payload.html">newton-runtime-payload</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/newton-variant-metadata.html">newton-variant-metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/mujoco-variant-set.html">mujoco-variant-set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/mujoco-runtime-payload.html">mujoco-runtime-payload</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/mujoco-variant-metadata.html">mujoco-variant-metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/runtime-variant-section-purity.html">runtime-variant-section-purity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/requirements/runtime-physics-isolation.html">runtime-physics-isolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/core/runtime_variants/runtime-physics-isolation-matrix.html">Runtime Physics Isolation Matrix</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/visualization/visualization.html">Visualization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/visualization/geometry/capability-geometry.html">Geometry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/visualization/geometry/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/visualization/geometry/creators_overview.html">Creators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/visualization/geometry/developers_overview.html">Developers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/visualization/materials/capability-materials.html">Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/visualization/materials/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/visualization/materials/developers.html">Developers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/visualization/display_color/capability-display_color.html">Display Color</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/visualization/display_color/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/isaac_sim/isaac_sim.html">Isaac Sim</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/isaac_sim/composition/capability-composition.html">Composition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/isaac_sim/composition/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/isaac_sim/ros_bridge/capability-ros_bridge.html">ROS Bridge</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/isaac_sim/ros_bridge/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/isaac_sim/robot_materials/capability-robot_materials.html">Robot Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/isaac_sim/robot_materials/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/isaac_sim/robot_core/capability-robot_core.html">Robot Core</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/isaac_sim/robot_core/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_bodies.html">Physics Bodies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/physics_bodies/base_articulation/capability-base-articulation.html">Base Articulation</a></li>
+
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_rigid_bodies/capability-physics_rigid_bodies.html">Rigid Bodies and Colliders</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_rigid_bodies/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_rigid_bodies/creators.html">Creators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_colliders/capability-collider_approximations.html">Collider Approximations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_colliders/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_colliders/creators.html">Creators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_joints/capability-physics_joints.html">Joints and Articulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_joints/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_joints/creators.html">Creators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_driven_joints/capability-physics_driven_joints.html">Driven Joints</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_driven_joints/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_materials/capability-physics_materials.html">Physics Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_materials/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_materials/creators.html">Creators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_graspable/capability-physics_graspable.html">Graspable Vectors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_graspable/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_graspable/creators.html">Creators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_grippers/capability-physics_grippers.html">Grippers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_grippers/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/physics_bodies/physics_sensors/capability-physics_sensors.html">Physics Sensors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/physics_bodies/physics_sensors/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/hierarchy/hierarchy.html">Hierarchy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/hierarchy/capability-hierarchy.html">Hierarchy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/hierarchy/requirements.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/hierarchy/creators_overview.html">Creators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/hierarchy/developers_overview.html">Developers</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_sensors.html">Non-Visual Sensors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/capability-nonvisual_materials.html">Non-Visual Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements.html">Non-Visual Materials Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/nonvisual_attributes_table.html">Non-Visual Sensor Attributes Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements/material-base.html">material-base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements/material-coating.html">material-coating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements/material-attributes.html">material-attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements/material-time.html">material-time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements/material-binding.html">material-binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/nonvisual_materials/requirements/material-consistency.html">material-consistency</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/nonvisual_sensors/lidar/capability-lidar.html">LiDAR Sensor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/nonvisual_sensors/lidar/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/rendering/rendering.html">Rendering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/rendering/render_products/capability-render_products.html">Render Products</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/rendering/render_products/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/semantic_labels/capability-semantic_labels.html">Semantic Labels</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/semantic_labels/requirements.html">Semantic Labels Requirements</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-capability.html">semantic-label-capability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-deprecated-schema.html">semantic-label-deprecated-schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-qcode-valid.html">semantic-label-qcode-valid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-schema.html">semantic-label-schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-time.html">semantic-label-time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-material.html">semantic-label-material</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-capability.html">semantic-label-capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-deprecated-schema.html">semantic-label-deprecated-schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-qcode-valid.html">semantic-label-qcode-valid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-schema.html">semantic-label-schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-time.html">semantic-label-time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/semantic_labels/requirements/semantic-label-material.html">semantic-label-material</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/dataset_taxonomies/capability-dataset_taxonomies.html">Dataset Taxonomies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements.html">Dataset Taxonomies Requirements</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/coco-labels.html">coco-labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/cityscapes-labels.html">cityscapes-labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/ade20k-labels.html">ade20k-labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/pascal-voc-labels.html">pascal-voc-labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/sunrgbd-labels.html">sunrgbd-labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/imagenet-labels.html">imagenet-labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/coco-labels.html">coco-labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/cityscapes-labels.html">cityscapes-labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/ade20k-labels.html">ade20k-labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/pascal-voc-labels.html">pascal-voc-labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/sunrgbd-labels.html">sunrgbd-labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capabilities/dataset_taxonomies/requirements/imagenet-labels.html">imagenet-labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/packaging/packaging.html">Packaging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/packaging/packaging_core/capability-packaging_core.html">Packaging Core</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/packaging/packaging_core/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/packaging/conformance_metadata/capability-conformance_metadata.html">Conformance Metadata</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/packaging/conformance_metadata/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/packaging/packaging_introspection/capability-packaging_introspection.html">Packaging Introspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/packaging/packaging_introspection/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="capabilities/aif/aif.html">AIF</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/aif/metadata/capability-metadata.html">Metadata</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/aif/metadata/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/aif/connection_points/capability-connection_points.html">Connection Points</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/aif/connection_points/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/aif/thermal_cooling/capability-thermal_cooling.html">Thermal Cooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/aif/thermal_cooling/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="capabilities/aif/electrical/capability-electrical.html">Electrical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="capabilities/aif/electrical/requirements.html">Requirements</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="features/features.html">Features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="features/feature-dependency-graph.html">Feature dependency graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_000_STANDARD.html">Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_000_PHYSX.html">Core (PhysX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_000_NEWTON.html">Core (Newton)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_000_MUJOCO.html">Core (MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_000_ISAAC.html">Core (Isaac)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_001_STANDARD.html">Minimal Placeable Visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_002_STANDARD.html">Posable Bodies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_003_STANDARD.html">Rigid Body Physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_003_PHYSX.html">Rigid Body Physics (PhysX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_003_NEWTON.html">Rigid Body Physics (Newton)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_003_MUJOCO.html">Rigid Body Physics (MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_STANDARD.html">Simulate Multi-Body Physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_PHYSX.html">Simulate Multi-Body Physics (PhysX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_NEWTON.html">Simulate Multi-Body Physics (Newton)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_MUJOCO.html">Simulate Multi-Body Physics (MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_ROBOT_PHYSX.html">Simulate Multi-Body Physics (Robot PhysX) — Deprecated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_ROBOT_NEWTON.html">Simulate Multi-Body Physics (Robot Newton)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_004_ROBOT_MUJOCO.html">Simulate Multi-Body Physics (Robot MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_005_STANDARD.html">Simulate Grasp Physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_006_STANDARD.html">Materials (USDPreviewSurface)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_006_MDL.html">Materials (MDL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_006_OPENPBR.html">Materials (OpenPBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_007_STANDARD.html">Non-Visual Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_010_STANDARD.html">Display Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_011_STANDARD.html">Semantic Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_011_RTX.html">Semantic Labels (RTX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_046_STANDARD.html">Wikidata Q-Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_040_STANDARD.html">Open Taxonomy COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_041_STANDARD.html">Open Taxonomy Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_042_STANDARD.html">Open Taxonomy ADE20K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_043_STANDARD.html">Open Taxonomy PASCAL VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_044_STANDARD.html">Open Taxonomy SUN RGB-D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_045_STANDARD.html">Open Taxonomy ImageNet-1K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_021_ISAAC.html">Robot Core (Isaac)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_022_STANDARD.html">Driven Joints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_022_PHYSX.html">Driven Joints (PhysX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_022_NEWTON.html">Driven Joints (Newton)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_022_MUJOCO.html">Driven Joints (MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_022_ISAAC.html">Driven Joints (Isaac)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_023_ISAAC.html">Robot Materials (Isaac)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_024_STANDARD.html">Base Articulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_024_PHYSX.html">Base Articulation (PhysX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_024_NEWTON.html">Base Articulation (Newton)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_024_MUJOCO.html">Base Articulation (MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_025_ROS.html">ROS Ready (Isaac)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_034_ISAAC.html">IMU Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_037_ISAAC.html">Joint Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_035_RTX.html">Camera and Render Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_036_RTX.html">RTX Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_028_STANDARD.html">Gripper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_028_ISAAC.html">Gripper (Isaac)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_028_MUJOCO.html">Gripper (MuJoCo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_030_STANDARD.html">Packaging Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_031_STANDARD.html">Self-contained Package Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_032_STANDARD.html">Packaging Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_033_STANDARD.html">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_100_ISAAC.html">IsaacSim Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_101_ISAAC.html">Robot IsaacSim Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_200-aif_metadata.html">AIF Core Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_201-connection_points.html">Connection Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_202-thermal_cooling.html">AIF Thermal Cooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/FET_203-electrical.html">AIF Electrical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/drafts/FET_006-baseline-appearance-visualization-feature-card.html">Draft - Baseline Appearance Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/drafts/FET_006-physically-plausible-appearance-visualization-feature-card.html">Draft - Physically Plausible Appearance Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/drafts/FET_010-object-color-visualization-feature-card.html">Draft - Object Color Visualization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="profiles/profiles.html">Profiles</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="profiles/robotics-prop.html">Robotics Prop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/robot-body.html">Robot Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/robot-gripper.html">Robot Gripper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/sensor-imu.html">Sensor IMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/sensor-joint.html">Sensor Joint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/sensor-camera.html">Sensor Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/sensor-lidar.html">Sensor LiDAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/open-taxonomy-coco.html">Open Taxonomy COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/open-taxonomy-cityscapes.html">Open Taxonomy Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/open-taxonomy-ade20k.html">Open Taxonomy ADE20K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/open-taxonomy-pascal_voc.html">Open Taxonomy PASCAL VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/open-taxonomy-sunrgbd.html">Open Taxonomy SUN RGB-D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/open-taxonomy-imagenet_1k.html">Open Taxonomy ImageNet-1K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles/aif-entity.html">AIF Entity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tiers/tiers.html">Tiers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tiers/core.html">Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tiers/aif.html">AIF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tiers/sensors.html">Sensors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="indexes/indexes.html">Indexes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="indexes/capability_status_index.html">Capability Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexes/requirements_index.html">Requirements Index</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Changelist</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Release notes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="release-notes">
+<h1>Release notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
+<p>Release history for the SimReady Foundation. Public releases use a
+<code class="docutils literal notranslate"><span class="pre">major.minor</span></code> product version. Repository branches and Python distributions
+prefix that version with the release year, so Foundation 8.0 is published as
+<code class="docutils literal notranslate"><span class="pre">2026.08.0</span></code> from the <code class="docutils literal notranslate"><span class="pre">release-2026.08.0</span></code> branch. This release version is
+separate from the semantic versions assigned to individual features and
+profiles. The current repository version is recorded in <code class="docutils literal notranslate"><span class="pre">VERSION.md</span></code>.</p>
+<p>Foundation 8.0 requires the 8.0 releases of the SimReady libraries
+(<code class="docutils literal notranslate"><span class="pre">simready-validate</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-package</span></code>, etc.).
+Foundation 8.0 does not work with older library releases.</p>
+<p>The 8.0 SimReady libraries (<code class="docutils literal notranslate"><span class="pre">simready-validate</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code>,
+<code class="docutils literal notranslate"><span class="pre">simready-package</span></code>, etc.) are backward-compatible with earlier Foundation
+releases, including 6.0 and 7.1.</p>
+<p>Use documentation, tier content, and profile versions for the Foundation
+release you are targeting. When adopting a newer Foundation profile, migrate
+assets and custom tiers as needed and validate them against that profile;
+earlier validation results or stamps do not establish conformance to it.</p>
+<p>Entries are newest first.</p>
+<!--
+Template for a new release entry. Copy the block between the markers, fill in
+the version and date, and drop any section that has no entries. Keep
+"Breaking changes" and "Deprecated" even when they are empty: state NONE
+rather than omitting them, so readers never have to guess whether the section
+was considered.
+
+## YYYY.MM.patch — Month YYYY
+
+One-paragraph summary of what this release is about.
+
+### Breaking changes
+NONE
+
+### Added
+
+### Changed
+
+### Deprecated
+NONE
+
+### Removed
+
+### Fixed
+-->
+<hr class="docutils" />
+<section id="post1-october-2026">
+<h2>2026.08.0-post1 — October 2026<a class="headerlink" href="#post1-october-2026" title="Link to this heading">#</a></h2>
+<p>Material and semantic-label validation fixes for Foundation 8.0. This
+post-release corrects false failures for linear albedo and physics-only
+materials, ensures semantic checkers initialize through the validation
+engine, and detects missing authored physics mass units. Existing feature
+and profile version pins are unchanged.</p>
+<section id="breaking-changes">
+<h3>Breaking changes<a class="headerlink" href="#breaking-changes" title="Link to this heading">#</a></h3>
+<p>NONE</p>
+</section>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SL.MAT.001</span></code> checks materials used by renderable geometry through render
+bindings and resolving a shading network. Physics-only materials, unused
+material libraries, and materials used only by guide or proxy geometry no
+longer require material-segmentation labels. Inherited bindings,
+material-bind subsets, and instance proxies are included in the visual
+material scope.</p></li>
+<li><p>The semantic material checker initializes through the consumer’s rule
+factory and resets its material-scope cache between variant passes.
+Missing labels and time-sampled labels produce the expected failures in
+both the validation API and CLI.</p></li>
+<li><p>Linear albedo explicitly declaring <code class="docutils literal notranslate"><span class="pre">raw</span></code> is accepted for UsdPreviewSurface
+<code class="docutils literal notranslate"><span class="pre">diffuseColor</span></code> (<code class="docutils literal notranslate"><span class="pre">VM.TEX.003</span></code>) and MDL <code class="docutils literal notranslate"><span class="pre">diffuse_texture</span></code> (<code class="docutils literal notranslate"><span class="pre">VM.TEX.002</span></code> and
+<code class="docutils literal notranslate"><span class="pre">VM.TEX.005</span></code>). A Preview texture shared by albedo and data inputs can use
+<code class="docutils literal notranslate"><span class="pre">raw</span></code>. Normal/data texture checks, other color inputs, OpenPBR checks, and
+invalid color-space token diagnostics retain their existing behavior.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UN.003</span></code> now checks whether <code class="docutils literal notranslate"><span class="pre">kilogramsPerUnit</span></code> is authored when physics
+objects are present. The OpenUSD getter’s default value of <code class="docutils literal notranslate"><span class="pre">1.0</span></code> no longer
+hides missing stage metadata.</p></li>
+</ul>
+</section>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Regression tests for linear albedo, visual-only material semantics,
+material-scope cache resets, authored mass units, and initialization of
+every Core checker through the consumer’s rule factory.</p></li>
+<li><p>Installed-wheel API and CLI tests for missing, time-sampled, and static
+material labels using the stock <code class="docutils literal notranslate"><span class="pre">Robotics-Prop&#64;3.2.0</span></code> profile.</p></li>
+</ul>
+</section>
+<section id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Material color-space requirements, RTX material-label feature guidance,
+and the semantic-label workflow now describe the corrected scope and
+albedo encoding behavior. The materials index includes the per-family
+color-space pages.</p></li>
+<li><p>Package versions in this release are listed below. Post-release
+numbers can differ between packages within the Foundation 8.0 line.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2026.8.0.post1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-aif</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2026.8.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-sensors</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2026.8.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">VERSION.md</span></code> and the release tag identify this repository snapshot as
+<code class="docutils literal notranslate"><span class="pre">2026.08.0-post1</span></code>. The 8.0 SimReady libraries (<code class="docutils literal notranslate"><span class="pre">simready-validate</span></code>,
+<code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-package</span></code>, etc.) remain backward-compatible
+with earlier Foundation releases, including 6.0 and 7.1.</p>
+</section>
+<section id="deprecated">
+<h3>Deprecated<a class="headerlink" href="#deprecated" title="Link to this heading">#</a></h3>
+<p>NONE</p>
+</section>
+<section id="removed">
+<h3>Removed<a class="headerlink" href="#removed" title="Link to this heading">#</a></h3>
+<p>NONE</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="september-2026">
+<h2>2026.08.0 — September 2026<a class="headerlink" href="#september-2026" title="Link to this heading">#</a></h2>
+<p>Visual materials, sensors, and AI Factory release. Foundation 8.0 adds the
+OpenPBR and display color material contracts, a Sensors tier covering IMU,
+joint, camera, and LiDAR sensors, and an AIF tier for AI Factory data center
+equipment. Asset provenance moves from nested USD metadata to a USD and
+sidecar union, and the legacy split prop and robot profiles are consolidated
+into <code class="docutils literal notranslate"><span class="pre">Robotics-Prop</span></code>, <code class="docutils literal notranslate"><span class="pre">Robot-Body</span></code>, and <code class="docutils literal notranslate"><span class="pre">Robot-Gripper</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Foundation 8.0 requires the 8.0 releases of the SimReady libraries
+(<code class="docutils literal notranslate"><span class="pre">simready-validate</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-package</span></code>, etc.).
+Foundation 8.0 does not work with older library releases.</p>
+<p>The 8.0 SimReady libraries (<code class="docutils literal notranslate"><span class="pre">simready-validate</span></code>, <code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code>,
+<code class="docutils literal notranslate"><span class="pre">simready-package</span></code>, etc.) are backward-compatible with earlier Foundation
+releases, including 6.0 and 7.1.</p>
+</div>
+<section id="foundation-8-0-libraries">
+<h3>Foundation 8.0 libraries<a class="headerlink" href="#foundation-8-0-libraries" title="Link to this heading">#</a></h3>
+<p>Foundation 8.0 ships as three tier packages, used together with the
+corresponding 8.0 SimReady tools:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code></p></td>
+<td><p>The baseline requirements, features, profiles, validators, and bundled runtime tests. Required.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-sensors</span></code></p></td>
+<td><p>Physics sensor, RTX LiDAR, and camera render-product contracts. Add it for sensor-bearing assets.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-aif</span></code></p></td>
+<td><p>AI Factory equipment contracts. Add it for CDU, CRAH, UPS, and compute-rack assets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simready-validate</span></code></p></td>
+<td><p>Static validation CLI and Python API.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code></p></td>
+<td><p>Runtime and behavioral testing in Kit or Isaac Sim. Arrives through a tier’s <code class="docutils literal notranslate"><span class="pre">benchmark</span></code> extra; you do not normally install it directly.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simready-package</span></code></p></td>
+<td><p>Package creation and pre/post validation. Use the <code class="docutils literal notranslate"><span class="pre">publish</span></code> extra for WRAPP publishing.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The tier wheels for a given Foundation release share one version line, so
+install the tiers you need in a single command and let pip resolve a matching
+set rather than pinning them separately:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"simready-foundation-tier-core[benchmark]"</span><span class="w"> </span>simready-validate
+</pre></div>
+</div>
+<p>Add <code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-sensors</span></code> or <code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-aif</span></code> to
+that same command when the asset needs them. Supporting packages such as
+<code class="docutils literal notranslate"><span class="pre">usd-validation-nvidia</span></code>, <code class="docutils literal notranslate"><span class="pre">MaterialX</span></code>, <code class="docutils literal notranslate"><span class="pre">pillow</span></code>, <code class="docutils literal notranslate"><span class="pre">usd-core</span></code>, and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> are
+resolved transitively.</p>
+<p>The published version of each package is listed on its PyPI project page. Pin
+exact versions there if your environment requires reproducible installs, and
+keep the three tier wheels on the same version when you do.</p>
+</section>
+<section id="id1">
+<h3>Breaking changes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The split prop and robot profiles are removed in favor of the consolidated
+profiles. Re-stamp affected assets and validate again; a stamp naming a
+removed profile no longer resolves. The runtime-specific behavior these
+profiles carried is now selected through optional PhysX, Newton, MuJoCo, and
+Isaac feature bundles on the consolidated profile versions, rather than by
+choosing a separate profile.</p></li>
+<li><p>A UsdPreviewSurface material is now mandatory on the 8.0 profile versions.
+<code class="docutils literal notranslate"><span class="pre">FET_006_STANDARD</span></code> was optional through <code class="docutils literal notranslate"><span class="pre">Robotics-Prop&#64;3.3.0</span></code>; at
+<code class="docutils literal notranslate"><span class="pre">Robotics-Prop&#64;4.0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">Robot-Body&#64;3.0.0</span></code>, and <code class="docutils literal notranslate"><span class="pre">Robot-Gripper&#64;3.0.0</span></code> it is
+required, at version <code class="docutils literal notranslate"><span class="pre">0.2.0</span></code>. An asset that passes the previous profile
+version without a UsdPreviewSurface material will fail the 8.0 version.
+Author one, or pin the earlier profile version. OpenPBR, MDL, and display
+color remain optional alongside it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_000_STANDARD&#64;0.2.0</span></code> drops <code class="docutils literal notranslate"><span class="pre">NP.006</span></code> (conformance metadata location) and
+<code class="docutils literal notranslate"><span class="pre">SR.001</span></code> (SimReady metadata whitelist) from the Core feature. Both moved to
+the packaging and metadata features. Custom-tier owners who relied on Core to
+supply them must add <code class="docutils literal notranslate"><span class="pre">FET_031_STANDARD</span></code> and <code class="docutils literal notranslate"><span class="pre">FET_033_STANDARD</span></code> to the
+affected profile versions in their profile TOML. Asset authors are not
+affected as long as they use an 8.0 profile version, which pins both.</p></li>
+</ul>
+<p>Profile migration map:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Removed profile</p></th>
+<th class="head"><p>Use instead</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Prop-Robotics-Neutral</span></code>, <code class="docutils literal notranslate"><span class="pre">Prop-Robotics-Physx</span></code>, <code class="docutils literal notranslate"><span class="pre">Prop-Robotics-Isaac</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Robotics-Prop</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Robot-Body-Neutral</span></code>, <code class="docutils literal notranslate"><span class="pre">Robot-Body-Isaac</span></code>, <code class="docutils literal notranslate"><span class="pre">Robot-Body-Runnable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Robot-Body</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id2">
+<h3>Added<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="tier-distribution">
+<h4>Tier distribution<a class="headerlink" href="#tier-distribution" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-sensors</span></code>, a Sensors tier owning the physics
+sensor, RTX LiDAR, and render-product capabilities, their four profiles,
+validators, and bundled runtime tests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-aif</span></code>, an AI Factory tier owning equipment class
+metadata, connection points, thermal cooling, and electrical contracts for
+CDU, CRAH, UPS, and compute-rack assets.</p></li>
+<li><p>Shared tier documentation covering the Core, AIF, and Sensors tiers
+(<code class="docutils literal notranslate"><span class="pre">shared/tiers/</span></code>).</p></li>
+</ul>
+</section>
+<section id="visual-materials">
+<h4>Visual materials<a class="headerlink" href="#visual-materials" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_006_OPENPBR&#64;0.1.0</span></code>: the OpenPBR material contract, with the final
+surface authored as an OpenPBR shading network on <code class="docutils literal notranslate"><span class="pre">outputs:mtlx:surface</span></code>
+(<code class="docutils literal notranslate"><span class="pre">VM.PBR.001</span></code>–<code class="docutils literal notranslate"><span class="pre">VM.PBR.003</span></code>, <code class="docutils literal notranslate"><span class="pre">VM.TEX.004</span></code>). OpenPBR is the recommended target
+for new SimReady assets; MDL remains permitted for existing content.
+<code class="docutils literal notranslate"><span class="pre">VM.PBR.001</span></code> is phased-permissive, so an MDL surface still passes during
+migration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_006_STANDARD&#64;0.2.0</span></code> and <code class="docutils literal notranslate"><span class="pre">FET_006_MDL&#64;0.2.0</span></code>: expanded UsdPreviewSurface
+and MDL contracts covering bind scope, final-surface presence, PBR parameter
+ranges, and per-family texture color space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_010_STANDARD&#64;0.1.0</span></code>: display color on renderable geometry
+(<code class="docutils literal notranslate"><span class="pre">DISP.001</span></code>–<code class="docutils literal notranslate"><span class="pre">DISP.003</span></code>), with a new Display Color capability and validator.</p></li>
+<li><p>Guide: Visual Materials (<code class="docutils literal notranslate"><span class="pre">guides/visual_materials/visual_materials.md</span></code>),
+covering OpenPBR and display color authoring, validation, and rendering.</p></li>
+</ul>
+</section>
+<section id="sensors">
+<h4>Sensors<a class="headerlink" href="#sensors" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_034_ISAAC&#64;0.1.0</span></code> (IMU sensor rigid-body attachment, <code class="docutils literal notranslate"><span class="pre">PS.001</span></code>) and
+<code class="docutils literal notranslate"><span class="pre">FET_037_ISAAC&#64;0.1.0</span></code> (joint sensor on the articulation root, <code class="docutils literal notranslate"><span class="pre">PS.002</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_035_RTX&#64;0.1.0</span></code>: camera render products and AOVs (<code class="docutils literal notranslate"><span class="pre">RP.001</span></code>–<code class="docutils literal notranslate"><span class="pre">RP.006</span></code>),
+including codec validation and BLOSC compression for semantic AOVs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_036_RTX&#64;0.1.0</span></code>: RTX LiDAR (<code class="docutils literal notranslate"><span class="pre">LI.001</span></code>–<code class="docutils literal notranslate"><span class="pre">LI.004</span></code>), covering the OmniLidar
+schema, emitter-state array consistency, the scan-rate floor, and
+solid-state ray counts.</p></li>
+<li><p>Four sensor profiles at <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code> — <code class="docutils literal notranslate"><span class="pre">Sensor-IMU</span></code>, <code class="docutils literal notranslate"><span class="pre">Sensor-Joint</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Sensor-Camera</span></code>, and <code class="docutils literal notranslate"><span class="pre">Sensor-LiDAR</span></code> — each stamped alongside an asset’s
+primary profile, with authoring guides.</p></li>
+<li><p>Runtime tests: <code class="docutils literal notranslate"><span class="pre">imu_sensor_data</span></code>, <code class="docutils literal notranslate"><span class="pre">joint_sensor_data</span></code>,
+<code class="docutils literal notranslate"><span class="pre">render_product_output</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_aov_output</span></code>, and <code class="docutils literal notranslate"><span class="pre">lidar_point_cloud</span></code>.</p></li>
+</ul>
+</section>
+<section id="ai-factory-equipment">
+<h4>AI Factory equipment<a class="headerlink" href="#ai-factory-equipment" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FET200_AIF</span></code> (equipment metadata, <code class="docutils literal notranslate"><span class="pre">AM.001</span></code>–<code class="docutils literal notranslate"><span class="pre">AM.007</span></code>), <code class="docutils literal notranslate"><span class="pre">FET201_AIF</span></code>
+(connection points), <code class="docutils literal notranslate"><span class="pre">FET202_AIF</span></code> (thermal cooling), and <code class="docutils literal notranslate"><span class="pre">FET203_AIF</span></code>
+(electrical), with <code class="docutils literal notranslate"><span class="pre">FET201</span></code>–<code class="docutils literal notranslate"><span class="pre">FET203</span></code> at both <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">0.2.0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AIF-Entity</span></code> profile at <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">0.2.0</span></code>. A single profile covers all
+equipment classes; <code class="docutils literal notranslate"><span class="pre">aif:core:assetClass</span></code> selects the class-specific checks.</p></li>
+<li><p>Reference assets for four equipment classes under <code class="docutils literal notranslate"><span class="pre">sample_content/aif/</span></code>.</p></li>
+</ul>
+</section>
+<section id="metadata-and-packaging">
+<h4>Metadata and packaging<a class="headerlink" href="#metadata-and-packaging" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SR.004</span></code>: provenance read from the union of root-layer <code class="docutils literal notranslate"><span class="pre">customLayerData</span></code> and
+an optional same-directory <code class="docutils literal notranslate"><span class="pre">&lt;usd_stem&gt;.json</span></code> sidecar, delivered as
+<code class="docutils literal notranslate"><span class="pre">FET_033_STANDARD&#64;0.4.0</span></code>. A field must not be authored in both locations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Package-Candidate&#64;1.3.0</span></code> adopts <code class="docutils literal notranslate"><span class="pre">FET_033_STANDARD&#64;0.4.0</span></code>.</p></li>
+</ul>
+</section>
+<section id="profiles">
+<h4>Profiles<a class="headerlink" href="#profiles" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>8.0 releases of the consolidated profiles: <code class="docutils literal notranslate"><span class="pre">Robotics-Prop&#64;4.0.0</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Robot-Body&#64;3.0.0</span></code>, and <code class="docutils literal notranslate"><span class="pre">Robot-Gripper&#64;3.0.0</span></code>, each requiring
+<code class="docutils literal notranslate"><span class="pre">FET_006_STANDARD&#64;0.2.0</span></code> with optional OpenPBR, MDL, and display color.</p></li>
+<li><p>Intermediate versions <code class="docutils literal notranslate"><span class="pre">Robotics-Prop&#64;3.3.0</span></code>, <code class="docutils literal notranslate"><span class="pre">Robot-Body&#64;2.3.0</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">Robot-Gripper&#64;2.2.0</span></code> adopt <code class="docutils literal notranslate"><span class="pre">FET_033_STANDARD&#64;0.4.0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Robot-Body&#64;2.3.0</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;3.0.0</span></code> offer the full optional runtime menu for all
+three solvers — core scaffolding, rigid body, multibody, driven joints, and
+articulation for PhysX, Newton, and MuJoCo — rather than PhysX alone.</p></li>
+</ul>
+</section>
+<section id="conformance-skills">
+<h4>Conformance skills<a class="headerlink" href="#conformance-skills" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-conform-fet-006-openpbr</span></code> and
+<code class="docutils literal notranslate"><span class="pre">simready-foundation-conform-fet-010-standard</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h3>Changed<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The reference prop library is re-authored to payload-based composition, with
+per-solver instance layers and refreshed light, dark, and transparent
+thumbnails.</p></li>
+<li><p>Geometry and units validators delegate to <code class="docutils literal notranslate"><span class="pre">usd-validation-nvidia</span></code> rather
+than duplicating the checks locally. The affected requirements are now
+referenced through their <code class="docutils literal notranslate"><span class="pre">com.nvidia.usd.*</span></code> names.</p></li>
+<li><p>The monolithic texture color-space requirement is replaced by per-family
+requirements for UsdPreviewSurface, OpenPBR, and MDL
+(<code class="docutils literal notranslate"><span class="pre">VM.TEX.003</span></code>–<code class="docutils literal notranslate"><span class="pre">VM.TEX.005</span></code>).</p></li>
+<li><p>Built-in Kit MDL modules such as OmniPBR are exempt from the rule requiring
+MDL sources to be packaged with the asset, matching Isaac asset transformer
+behavior.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Deprecated<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>NONE</p>
+</section>
+<section id="id5">
+<h3>Removed<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The six split prop and robot profiles listed under Breaking changes.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">atomic_asset</span></code> executable validator. Its requirements are now checked by
+<code class="docutils literal notranslate"><span class="pre">usd-validation-nvidia</span></code>; the capability documentation remains.</p></li>
+<li><p>Per-asset <code class="docutils literal notranslate"><span class="pre">metadata.json</span></code> sidecars and <code class="docutils literal notranslate"><span class="pre">web/*.glb</span></code> exports from the migrated
+reference props, replaced by the USD-native provenance and thumbnail layout.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Fixed<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Physics drop placement is size-safe for the <code class="docutils literal notranslate"><span class="pre">FET_003</span></code> ground and slope drop
+runtime tests.</p></li>
+<li><p>Cross-engine runtime-test reliability for gripper, articulation, and
+placement tests.</p></li>
+<li><p>Stale Isaac references removed from the sample manifest.</p></li>
+<li><p>Material and thumbnail fixes for the lamp and workbench tool props.</p></li>
+<li><p>The sensor runtime tests ship with the Sensors tier (OMPE-112896), and their
+execution was corrected (OMPE-113171, OMPE-113178, OMPE-113181).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_005</span></code> grasp setup now resolves rigid bodies outside identifier scopes,
+and Newton failure reporting is corrected.</p></li>
+<li><p>Generated artifacts and unreferenced DCC source assets are excluded from the
+released package.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="august-2026">
+<h2>2026.07.1 — August 2026<a class="headerlink" href="#august-2026" title="Link to this heading">#</a></h2>
+<p>Tiered distribution and multiphysics release. The specification is now
+distributed as installable tier packages, so <code class="docutils literal notranslate"><span class="pre">simready-validate</span></code> discovers
+requirements, features, and profiles from installed wheels instead of
+filesystem paths. One SimReady prop can carry isolated PhysX, Newton, and
+MuJoCo physics payloads through USD runtime variants, with matching features,
+validators, samples, and authoring docs. This release supersedes 2026.07.0,
+which was not shipped; its content is included here.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Foundation 7.1 is not backward-compatible with earlier Foundation major or
+minor releases. Do not mix 7.1 requirements, features, profiles, or tier
+packages with content from 7.0 or earlier. Existing assets and custom tiers
+must be migrated as needed and revalidated against a 7.1 profile; validation
+results or stamps from an older Foundation release do not establish 7.1
+conformance.</p>
+</div>
+<section id="foundation-7-1-libraries">
+<h3>Foundation 7.1 libraries<a class="headerlink" href="#foundation-7-1-libraries" title="Link to this heading">#</a></h3>
+<p>Use the following independently versioned libraries with Foundation 7.1:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Compatible version</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2026.7.1</span></code></p></td>
+<td><p>Foundation 7.1 requirements, features, profiles, validators, and bundled runtime tests.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simready-validate</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=2026.7.0.dev1</span></code></p></td>
+<td><p>Static validation CLI and Python API.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simready-benchmark[kit]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=2026.6.6</span></code></p></td>
+<td><p>Runtime and behavioral testing in Kit or Isaac Sim; installed by the core tier’s <code class="docutils literal notranslate"><span class="pre">benchmark</span></code> extra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simready-package</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=2026.6.0a1</span></code></p></td>
+<td><p>Package creation and pre/post validation; use the <code class="docutils literal notranslate"><span class="pre">publish</span></code> extra for WRAPP publishing.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For a complete validation and Benchmark environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"simready-foundation-tier-core[benchmark]==2026.7.1"</span><span class="w"> </span><span class="s2">"simready-validate&gt;=2026.7.0.dev1"</span>
+</pre></div>
+</div>
+<p>Add <code class="docutils literal notranslate"><span class="pre">simready-package&gt;=2026.6.0a1</span></code> for packaging, or
+<code class="docutils literal notranslate"><span class="pre">simready-package[publish]&gt;=2026.6.0a1</span></code> when WRAPP publishing is required.
+Supporting packages such as <code class="docutils literal notranslate"><span class="pre">usd-validation-nvidia&gt;=1.20.0</span></code>,
+<code class="docutils literal notranslate"><span class="pre">usd-core&gt;=23.5</span></code>, and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> are resolved transitively.</p>
+</section>
+<section id="id7">
+<h3>Breaking changes<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-isaac</span></code> is no longer published. Its Isaac Sim
+capabilities, features, and profiles are now part of
+<code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code>. Run
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">simready-foundation-tier-isaac</span></code> before upgrading: leaving both
+in one environment registers the Isaac requirement IDs twice.</p></li>
+<li><p>Foundation runtime tests now ship inside <code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code>
+rather than as standalone distributions. Uninstall
+<code class="docutils literal notranslate"><span class="pre">simready-benchmark-kit-suite</span></code> and <code class="docutils literal notranslate"><span class="pre">simready-foundation-runtime-tests-kit</span></code>
+before upgrading an existing Benchmark environment; both can own files in the
+same top-level package now bundled by the core tier.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Added<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="tiered-distribution">
+<h4>Tiered distribution<a class="headerlink" href="#tiered-distribution" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Tier packaging: the specification ships as <code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code>,
+a Python package owning the Core, Hierarchy, Visualization, Physics Bodies,
+Isaac Sim, Non-Visual Sensors, Semantic Labels, Dataset Taxonomies, and
+Packaging capabilities along with their profiles.</p></li>
+<li><p>Tier discovery through the <code class="docutils literal notranslate"><span class="pre">usd_validation_nvidia</span></code> and <code class="docutils literal notranslate"><span class="pre">simready.tier</span></code> entry
+points, so <code class="docutils literal notranslate"><span class="pre">simready-validate</span></code> loads content from installed wheels. The
+<code class="docutils literal notranslate"><span class="pre">--rules-path</span></code>, <code class="docutils literal notranslate"><span class="pre">--features-path</span></code>, and <code class="docutils literal notranslate"><span class="pre">--profiles-path</span></code> flags are no longer
+needed once a tier is installed.</p></li>
+<li><p>Benchmark runtime tests bundled with their owning tier and advertised through
+<code class="docutils literal notranslate"><span class="pre">runtime_tests_path</span></code> on the tier descriptor, so tests and specification
+catalogs cannot drift. Validator-only installs stay lightweight; the
+<code class="docutils literal notranslate"><span class="pre">[benchmark]</span></code> extra installs the Benchmark engine dependencies.</p></li>
+<li><p>Guide: SimReady Foundation Tiers (<code class="docutils literal notranslate"><span class="pre">guides/tiers.md</span></code>), plus tier ownership
+surfaced across the capability, feature, and profile documentation.</p></li>
+</ul>
+</section>
+<section id="multiple-physics-solvers-runtime-variants">
+<h4>Multiple physics solvers (runtime variants)<a class="headerlink" href="#multiple-physics-solvers-runtime-variants" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Runtime Variants capability (<code class="docutils literal notranslate"><span class="pre">RV.001</span></code>–<code class="docutils literal notranslate"><span class="pre">RV.011</span></code>): per-runtime variant sets,
+payload locations under <code class="docutils literal notranslate"><span class="pre">runnables/physics/</span></code>, variant metadata, section
+purity, and composed-stage isolation.</p></li>
+<li><p>Runtime Physics Isolation Matrix documenting allow / forbid policy per
+selected solver (PhysX, Newton, MuJoCo, or neutral).</p></li>
+<li><p>Core runtime scaffolding features: <code class="docutils literal notranslate"><span class="pre">FET_000_PHYSX</span></code>, <code class="docutils literal notranslate"><span class="pre">FET_000_NEWTON</span></code>,
+<code class="docutils literal notranslate"><span class="pre">FET_000_MUJOCO</span></code>.</p></li>
+<li><p>Rigid-body and multibody runtime features: <code class="docutils literal notranslate"><span class="pre">FET_003_*</span></code> / <code class="docutils literal notranslate"><span class="pre">FET_004_*</span></code> for
+PhysX, Newton, and MuJoCo, including Newton collider, mass, material, and
+drive schemas.</p></li>
+<li><p>Optional runtime-variant feature bundles on <code class="docutils literal notranslate"><span class="pre">Robotics-Prop&#64;3.1.0</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Prop-Robotics-Physx&#64;2.2.0</span></code> (and related neutral/physx profile versions).</p></li>
+<li><p>Feature <code class="docutils literal notranslate"><span class="pre">runtime</span></code> field so <code class="docutils literal notranslate"><span class="pre">simready-validate</span></code> enables the matching physics
+variant before checking solver-specific rules.</p></li>
+<li><p>Reference samples with PhysX + Newton + MuJoCo payloads:
+<code class="docutils literal notranslate"><span class="pre">obs_orange_a02</span></code> (unibody) and <code class="docutils literal notranslate"><span class="pre">obs_electricians_large_tool_box_a01</span></code>
+(multibody).</p></li>
+<li><p>Guide: Multiple Physics Solvers (<code class="docutils literal notranslate"><span class="pre">guides/multiphysics_solvers.md</span></code>).</p></li>
+</ul>
+</section>
+<section id="semantic-labels-and-dataset-taxonomies">
+<h4>Semantic labels and dataset taxonomies<a class="headerlink" href="#semantic-labels-and-dataset-taxonomies" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Semantic Labels capability (<code class="docutils literal notranslate"><span class="pre">SL.001</span></code>–<code class="docutils literal notranslate"><span class="pre">SL.003</span></code>, <code class="docutils literal notranslate"><span class="pre">MAT.001</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME.001</span></code>) in the
+core tier, covering label schema, material labels, and time-sampled labels.</p></li>
+<li><p>Dataset Taxonomies capability with validators for the ADE20K, Cityscapes,
+COCO, SUN RGB-D, and Pascal VOC taxonomies (<code class="docutils literal notranslate"><span class="pre">ADE.001</span></code>, <code class="docutils literal notranslate"><span class="pre">CITY.001</span></code>,
+<code class="docutils literal notranslate"><span class="pre">COCO.001</span></code>, <code class="docutils literal notranslate"><span class="pre">SUN.001</span></code>, <code class="docutils literal notranslate"><span class="pre">VOC.001</span></code>).</p></li>
+<li><p>Sample assets updated to comply with the Semantic Labels specification.</p></li>
+</ul>
+</section>
+<section id="robotics">
+<h4>Robotics<a class="headerlink" href="#robotics" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FET_025_ROS</span></code> (ROS-Ready): Isaac ROS bridge-node presence for robot assets,
+offered as an optional feature on <code class="docutils literal notranslate"><span class="pre">Robot-Body&#64;2.2.0</span></code>.</p></li>
+<li><p>Standalone Isaac asset transformer, plus Isaac composition features.</p></li>
+<li><p>Complete FET022 driven-joint runtime testing on Newton.</p></li>
+<li><p>Restored the <code class="docutils literal notranslate"><span class="pre">FET_028</span></code> gripper stack that was dropped during the
+foundations 1.1 sync.</p></li>
+</ul>
+</section>
+<section id="metadata">
+<h4>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SR.003</span></code> nested provenance metadata extended with <code class="docutils literal notranslate"><span class="pre">asset_license</span></code>, <code class="docutils literal notranslate"><span class="pre">qcode</span></code>
+(Wikidata Q-Code), <code class="docutils literal notranslate"><span class="pre">rigid_body_count</span></code>, <code class="docutils literal notranslate"><span class="pre">asset_extents</span></code> (float3 meters, XYZ),
+and <code class="docutils literal notranslate"><span class="pre">mass</span></code> (kilograms), delivered as <code class="docutils literal notranslate"><span class="pre">FET_033_STANDARD&#64;0.3.0</span></code> and bundled
+into the robot and prop profiles.</p></li>
+</ul>
+</section>
+</section>
+<section id="id9">
+<h3>Changed<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Prop physics authoring guides document optional runtime variant scaffolding
+and per-solver payload expectations.</p></li>
+<li><p>Neutral base authoring guidance tightened so solver-only values (for example
+PhysX SDF approximation) stay inside runtime payloads.</p></li>
+<li><p>Recombined the separate validation tiers into the single core tier.</p></li>
+<li><p>Prop profiles updated to reference the new feature set.</p></li>
+<li><p>Benchmark reference documentation aligned with the registered runtime tests.</p></li>
+<li><p>Fixed KitMaker publishing and added the tier-core project ID.</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>Deprecated<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>NONE</p>
+</section>
+<section id="id11">
+<h3>Removed<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-isaac</span></code>, superseded by <code class="docutils literal notranslate"><span class="pre">simready-foundation-tier-core</span></code>.</p></li>
+<li><p>The standalone <code class="docutils literal notranslate"><span class="pre">simready-benchmark-kit-suite</span></code> and
+<code class="docutils literal notranslate"><span class="pre">simready-foundation-runtime-tests-kit</span></code> distributions, replaced by the
+runtime tests bundled with the core tier.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Fixed<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NP.008</span></code> false positives on UDIM texture paths, and UDIM path handling in the
+core validators (OMPE-104937).</p></li>
+<li><p>Driven-joint validators for prismatic PhysX mimic couplings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RB.011</span></code> tier validation logic.</p></li>
+<li><p>Registered the <code class="docutils literal notranslate"><span class="pre">dataset_taxonomies</span></code> validators in the core tier.</p></li>
+<li><p>Docs build now completes with all Sphinx warnings cleared.</p></li>
+<li><p>Sample-content validation isolated into two branch passes and now fails on
+logged errors (OMPE-103628).</p></li>
+<li><p>GitLab security builds and CI jobs.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="june-2026">
+<h2>2026.06.0 — June 2026<a class="headerlink" href="#june-2026" title="Link to this heading">#</a></h2>
+<p>The runtime, packaging, and robotics content release. Adds a behavioral
+benchmark test suite, formal asset packaging standards, robot runtime
+coverage, and a large set of spec, profile, and validator refinements on top
+of the 2026.04.x packaging milestone.</p>
+<section id="id13">
+<h3>Added<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="runtime-testing-benchmark-suite">
+<h4>Runtime testing &amp; benchmark suite<a class="headerlink" href="#runtime-testing-benchmark-suite" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>SimReady benchmark kit suite (<code class="docutils literal notranslate"><span class="pre">simready-benchmark-kit-suite</span></code>), a built-in
+runtime test suite that provides behavioral proof for features beyond static
+validators.</p></li>
+<li><p>Faithful runtime robot tests: closed-loop joints, IK solver, and
+gravity-on articulation behavior.</p></li>
+<li><p>Per-test reference docset for the runtime testing guides.</p></li>
+<li><p>Published <code class="docutils literal notranslate"><span class="pre">simready-benchmark</span></code> library documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_maker</span></code> now consumes the <code class="docutils literal notranslate"><span class="pre">simready_search</span></code> PyPI package for job
+generation.</p></li>
+</ul>
+</section>
+<section id="asset-packaging">
+<h4>Asset packaging<a class="headerlink" href="#asset-packaging" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Asset Packaging Standards implementation and packaging capability.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-package</span></code> sample workflow, with a thumbnail-presence check added to
+the package sample.</p></li>
+<li><p>Published SimReady package library documentation and packaging
+workflow doc, incorporating product review feedback.</p></li>
+</ul>
+</section>
+<section id="features-requirements">
+<h4>Features &amp; requirements<a class="headerlink" href="#features-requirements" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>FET028 gripper runtime test pack (close, lift, shake, drop). The
+non-functional close-lift variant was dropped before release.</p></li>
+<li><p>FET022 joint-rooted articulation support, spec-canonical discovery, and more
+actionable diagnostics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optional</span></code> tag support for multibody features in prop-specific profiles, so
+single-rigid-body props are not failed on multibody requirements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">com.nvidia.simready</span></code> metadata namespace.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VM.TEX.002</span></code> material-texture color-space requirement (albedo color space).</p></li>
+</ul>
+</section>
+<section id="documentation-governance">
+<h4>Documentation &amp; governance<a class="headerlink" href="#documentation-governance" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Onboarding, acceptance, and development workflow guides.</p></li>
+<li><p>Spec scorecard restructure with reworked workflows, tables, and validation
+links, plus prioritized stories and governance docs.</p></li>
+<li><p>GitHub docs URL wired into <code class="docutils literal notranslate"><span class="pre">project_config.toml</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id14">
+<h3>Changed<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Split the aggregate <code class="docutils literal notranslate"><span class="pre">profiles.toml</span></code> into nine per-profile TOML files under
+<code class="docutils literal notranslate"><span class="pre">profiles/</span></code>.</p></li>
+<li><p>Renamed the kit test suite module/dist to <code class="docutils literal notranslate"><span class="pre">simready-benchmark-kit-suite</span></code>.</p></li>
+<li><p>Updated the sample package to consume <code class="docutils literal notranslate"><span class="pre">simready-package</span></code>, following
+asset-validator and <code class="docutils literal notranslate"><span class="pre">usd-profiles</span></code> package updates.</p></li>
+<li><p>Updated USD asset validator dependencies; added a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> requirement,
+<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, and venv setup instructions.</p></li>
+<li><p>Added SimReady Foundation entrypoint plugin support to the Asset Validator.</p></li>
+<li><p>Added a <code class="docutils literal notranslate"><span class="pre">sample_content</span></code> validation test job to the CI pipeline.</p></li>
+<li><p>Fixed capability requirement enum ownership.</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>Fixed<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NP.003</span></code>/<code class="docutils literal notranslate"><span class="pre">NP.005</span></code> naming/path conflict resolved and folder-layout enforcement
+corrected (bug 6243124).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HI.001</span></code> root-count check now excludes the Omniverse <code class="docutils literal notranslate"><span class="pre">/Render</span></code> scope.</p></li>
+<li><p>Sub-threshold pivot offsets now report as <code class="docutils literal notranslate"><span class="pre">SKIPPED</span></code> rather than an advisory
+warning.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physx_to_isaacsim</span></code>: fixed textures-folder casing mismatch in USD references.</p></li>
+<li><p>Fixed duplicate collider produced after the Isaac transform.</p></li>
+<li><p>UR10 profile and validation fixes; asset transformer update.</p></li>
+<li><p>Security hardening: removed benign local-path references and applied
+additional security fixes.</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>Removed<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Deprecated requirement <code class="docutils literal notranslate"><span class="pre">RB.006</span></code>.</p></li>
+<li><p>Removed the generated <code class="docutils literal notranslate"><span class="pre">config.json</span></code> from source control.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="may-2026">
+<h2>2026.04.1 — May 2026<a class="headerlink" href="#may-2026" title="Link to this heading">#</a></h2>
+<p>Patch release on top of 2026.04.0.</p>
+<section id="id17">
+<h3>Added<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Bundled conformance and authoring skills.</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>Changed<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>UR10 profile fixes.</p></li>
+</ul>
+</section>
+<section id="id19">
+<h3>Removed<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Removed in-progress testing docs that were not ready to ship.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="april-2026">
+<h2>2026.04.0 — April 2026<a class="headerlink" href="#april-2026" title="Link to this heading">#</a></h2>
+<p>The distribution milestone: SimReady validation became installable and
+runnable outside the docs repository, as both a Python package and a Kit
+extension.</p>
+<section id="id20">
+<h3>Added<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simready-validate</span></code> Python package with a <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">simready.validate</span></code>
+CLI entry point.</p></li>
+<li><p>Public PyPI wheel publishing via KitMaker (<code class="docutils literal notranslate"><span class="pre">deploy-python-public</span></code>), delivering
+the custom <code class="docutils literal notranslate"><span class="pre">omni.capabilities</span></code> / <code class="docutils literal notranslate"><span class="pre">simready.validate.requirements</span></code> alongside
+the package.</p></li>
+<li><p>SimReady Foundations Validators Kit extension.</p></li>
+<li><p>Initial robot specifications and related content developed from Isaac.</p></li>
+<li><p>Onboarding documentation and <code class="docutils literal notranslate"><span class="pre">simready-validate</span></code> usage guidance.</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>Changed<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cleanup of package dependencies and rules.</p></li>
+<li><p>Feature generation fixed for automatic codegen.</p></li>
+<li><p>Updated search library usage.</p></li>
+<li><p>Added SonarQube exclusions.</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>Fixed<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Guarded all <code class="docutils literal notranslate"><span class="pre">PhysxSchema</span></code> usages against <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p>Fixed import regressions causing <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> in PyPI-only
+environments.</p></li>
+<li><p>Fixed inherited material binding on an xform affecting thumbnail lighting
+rigs.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="indexes/requirements_index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Requirements Index</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post1-october-2026">2026.08.0-post1 — October 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-changes">Breaking changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed">Fixed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#added">Added</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changed">Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated">Deprecated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removed">Removed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#september-2026">2026.08.0 — September 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-8-0-libraries">Foundation 8.0 libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Breaking changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Added</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tier-distribution">Tier distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-materials">Visual materials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensors">Sensors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-factory-equipment">AI Factory equipment</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-and-packaging">Metadata and packaging</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profiles">Profiles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conformance-skills">Conformance skills</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Deprecated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Removed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Fixed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#august-2026">2026.07.1 — August 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-7-1-libraries">Foundation 7.1 libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Breaking changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Added</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiered-distribution">Tiered distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-physics-solvers-runtime-variants">Multiple physics solvers (runtime variants)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-labels-and-dataset-taxonomies">Semantic labels and dataset taxonomies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Deprecated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Removed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Fixed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-2026">2026.06.0 — June 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Added</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-testing-benchmark-suite">Runtime testing &amp; benchmark suite</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#asset-packaging">Asset packaging</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#features-requirements">Features &amp; requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-governance">Documentation &amp; governance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Fixed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Removed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2026">2026.04.1 — May 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Added</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Removed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-2026">2026.04.0 — April 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Added</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Fixed</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2025-2026, NVIDIA Corporation.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
