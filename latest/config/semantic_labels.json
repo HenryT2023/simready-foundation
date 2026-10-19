@@ -102,7 +102,7 @@
                     "path": "capabilities/semantic_labels/requirements/semantic-label-material.html",
                     "internal_path": "capabilities/semantic_labels/requirements/semantic-label-material.md"
                 },
-                "message": "Material prims must be labeled with a non-empty `SemanticsLabelsAPI:material` label.",
+                "message": "Visual material prims must be labeled with a non-empty `SemanticsLabelsAPI:material` label.",
                 "examples": []
             }
         ],

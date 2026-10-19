@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
@@ -38,14 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/tags.css?v=03faa5c8" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
 
 
-    <script src="../../_static/documentation_options.js?v=eb394bab"></script>
+    <script src="../../_static/documentation_options.js?v=07401e81"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,9 +53,9 @@
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/semantic_labels/semantic_labels';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.22.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://nvidia.github.io/simready-foundation/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2026.08.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2026.08.0-post1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -70,8 +70,9 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="2026.08.0" />
+  <meta name="docsearch:version" content="2026.08.0-post1" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -992,7 +993,7 @@ name into the value is the most common authoring error. See
 <td><p>RTX perception pipelines</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../../capabilities/semantic_labels/requirements/semantic-label-material.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SL.MAT.001</span></code></span></a></p></td>
-<td><p>Each <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim has a non-empty <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> label.</p></td>
+<td><p>Each visual <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim has a non-empty <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> label. Physics materials are out of scope.</p></td>
 <td><p>NVIDIA convention</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../capabilities/semantic_labels/requirements/semantic-label-qcode-valid.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SL.QCODE.001</span></code></span></a></p></td>
@@ -1152,7 +1153,7 @@ it inherits.</p>
 <p>Object labels answer <em>what is this</em>. Material labels answer <em>what is it made
 of</em>. Because they answer different questions they use different taxonomy
 instance names and live side by side on the same asset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">SL.MAT.001</span></code> asks that every <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim has a non-empty
+<p><code class="docutils literal notranslate"><span class="pre">SL.MAT.001</span></code> asks that every <em>visual</em> <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim has a non-empty
 <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> label:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pxr</span><span class="w"> </span><span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdShade</span><span class="p">,</span> <span class="n">UsdSemantics</span>
 
@@ -1173,6 +1174,13 @@ instance names and live side by side on the same asset.</p>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>A physics material is a <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim too, so keying on the prim type alone
+would label both kinds. The rule asks only for the materials a sensor can see: a
+material is in scope when renderable geometry (a <code class="docutils literal notranslate"><span class="pre">Gprim</span></code> or <code class="docutils literal notranslate"><span class="pre">materialBind</span></code>
+<code class="docutils literal notranslate"><span class="pre">GeomSubset</span></code> at <code class="docutils literal notranslate"><span class="pre">default</span></code> or <code class="docutils literal notranslate"><span class="pre">render</span></code> purpose) binds it through a render purpose,
+and the material resolves a shading network. A physics material is bound through
+<code class="docutils literal notranslate"><span class="pre">material:binding:physics</span></code> and has no render terminal, so it is skipped, and so
+is a material library nothing renders with.</p>
 <p>Both taxonomies then sit on the asset without conflicting:</p>
 <div class="highlight-usd notranslate"><div class="highlight"><pre><span></span><span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">"Toaster"</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"SemanticsLabelsAPI:class"</span><span class="p">]</span>
@@ -1478,8 +1486,8 @@ have it, so check before you trust an inherited <code class="docutils literal no
   
 
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
 
   <footer class="bd-footer">

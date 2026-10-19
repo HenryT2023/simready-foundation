@@ -13,8 +13,8 @@ Deprecated. See VM.TEX.005 for the current requirement.
 ## Description
 
 `VM.TEX.002` is frozen at the behaviour `FET_006_MDL` 0.1.0 shipped with: a texture input
-that authors `colorSpace` must author the value its signal needs, `sRGB` on a color input
-and `raw` on a data input. An input that authors no `colorSpace` is not examined.
+that authors `colorSpace` must author the value its signal needs: `sRGB` or `raw`
+on albedo (`diffuse_texture`), `sRGB` on other color inputs, and `raw` on data inputs. An input that authors no `colorSpace` is not examined.
 
 [`VM.TEX.005`](/capabilities/visualization/materials/requirements/material-texture-colorspace-mdl)
 states the current requirement. It covers the same authored values and adds the case this one

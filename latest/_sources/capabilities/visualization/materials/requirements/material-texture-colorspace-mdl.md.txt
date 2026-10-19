@@ -12,8 +12,13 @@ MDL materials and textures must use correct color space conventions
 
 ## Description
 
-A texture holds either a color or data, and the two need opposite treatment. A base color is
-sRGB-encoded and has to be decoded before it is used; a roughness, metalness or normal map holds
+Albedo on `diffuse_texture` may be sRGB-encoded or already linear: explicitly
+authored `sRGB` and `raw` are both accepted. A connection alone does not identify
+the image encoding. This allowance applies to both `VM.TEX.002` and `VM.TEX.005`;
+it does not relax normal/data checks or the other color inputs.
+
+A texture holds either a color or data, and the two need opposite treatment. An sRGB-encoded base color
+has to be decoded before it is used; a roughness, metalness or normal map holds
 values that have to be read as authored.
 
 An MDL shader names its texture inputs for what they hold: `diffuse_texture` is a color,
@@ -48,7 +53,7 @@ appearance formats side by side.
 
 ## Why is it required?
 
-- A base color texture read as linear renders washed out; a roughness or occlusion map read
+- An sRGB-encoded base color texture read as linear renders washed out; a roughness or occlusion map read
   as sRGB is read low across its range and the surface responds wrongly
 - The defect is invisible in the USD text: a well-formed material with a plausible texture path
 - `auto` resolves from the file's bit depth and channel count, not from the input it feeds, so
@@ -118,7 +123,7 @@ def Material "mtl_bracket"
 }
 ```
 
-### Invalid: a color texture declaring `raw`
+### Valid: linear albedo declaring `raw`
 
 ```usd
 def Material "mtl_bracket"
@@ -170,13 +175,15 @@ which:
 
 | Signal | Color space | Inputs |
 |---|---|---|
-| Color | `sRGB` | `diffuse_texture`, `emissive_color_texture`, and on OmniGlass `glass_color_texture` and `reflection_color_texture` |
+| Albedo | `sRGB` or `raw`, matching image encoding | `diffuse_texture` |
+| Other color | `sRGB` | `emissive_color_texture`, and on OmniGlass `glass_color_texture` and `reflection_color_texture` |
 | Data | `raw` | every other texture input, including roughness, metalness, ambient occlusion, ORM, opacity, emissive mask, and normal and detail-normal maps |
 
 Steps to comply:
 
 1. Author `colorSpace` metadata on each `asset inputs:*` texture input of the MDL shader.
-2. Use `sRGB` for the color inputs listed and `raw` for every other texture input.
+2. For `diffuse_texture`, use `sRGB` for sRGB-encoded albedo or `raw` for linear albedo.
+   Use `sRGB` for the other color inputs listed and `raw` for data textures.
 3. Set `raw` on every data texture whose file has three or four channels. `auto` decodes
    those whichever input they feed. On a single-channel file `auto` already resolves to `raw`.
 4. Save the texture files in the encoding the declared color space claims: an sRGB-encoded file tagged
@@ -188,12 +195,12 @@ Steps to comply:
 | Authored | On a color input | On a data input |
 |---|---|---|
 | `sRGB` | author this | reported |
-| `raw` | reported | author this |
+| `raw` | accepted for albedo (`diffuse_texture`); reported for other color inputs | author this |
 | `auto` | accepted | **reported**, unless the file is single channel |
 | absent | accepted — resolves as `auto` | **reported**, unless the file is single channel |
 | `srgb_rec709_scene` | accepted | reported |
 | `srgb_texture` | accepted | reported |
-| `none` | reported | accepted |
+| `none` | accepted for albedo as a raw alias; reported for other color inputs | accepted |
 | any other token | reported | reported |
 
 A color space outside these values cannot be interpreted and is reported.

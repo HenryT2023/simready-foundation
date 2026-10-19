@@ -74,8 +74,8 @@
                             "language": "usd",
                             "content": "def Material \"mtl_bracket\"\n{\n    token outputs:mdl:surface.connect = </mtl_bracket/Shader.outputs:out>\n\n    def Shader \"Shader\"\n    {\n        uniform token info:implementationSource = \"sourceAsset\"\n        uniform asset info:mdl:sourceAsset = @./materials/OmniPBR/OmniPBR.mdl@\n        uniform token info:mdl:sourceAsset:subIdentifier = \"OmniPBR\"\n\n        asset inputs:diffuse_texture = @./textures/bracket_basecolor.png@ (\n            colorSpace = \"raw\"\n        )\n        token outputs:out\n    }\n}"
                         },
-                        "name": "a color texture declaring `raw`",
-                        "result": "failure"
+                        "name": "linear albedo declaring `raw`",
+                        "result": "success"
                     },
                     {
                         "snippet": {
@@ -524,8 +524,8 @@
                             "language": "usd",
                             "content": "def Material \"mtl_bracket\"\n{\n    token outputs:surface.connect = </mtl_bracket/Preview.outputs:surface>\n\n    def Shader \"BaseColorTex\"\n    {\n        uniform token info:id = \"UsdUVTexture\"\n        asset inputs:file = @./textures/bracket_basecolor.png@\n        token inputs:sourceColorSpace = \"raw\"\n        float3 outputs:rgb\n    }\n\n    def Shader \"Preview\"\n    {\n        uniform token info:id = \"UsdPreviewSurface\"\n        color3f inputs:diffuseColor.connect = </mtl_bracket/BaseColorTex.outputs:rgb>\n        token outputs:surface\n    }\n}"
                         },
-                        "name": "a texture reaching `diffuseColor` and declaring `raw`",
-                        "result": "failure"
+                        "name": "linear albedo reaching `diffuseColor` and declaring `raw`",
+                        "result": "success"
                     },
                     {
                         "snippet": {

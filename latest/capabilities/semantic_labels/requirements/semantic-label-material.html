@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
@@ -38,14 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/tags.css?v=03faa5c8" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
 
 
-    <script src="../../../_static/documentation_options.js?v=eb394bab"></script>
+    <script src="../../../_static/documentation_options.js?v=07401e81"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,9 +53,9 @@
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'capabilities/semantic_labels/requirements/semantic-label-material';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.22.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://nvidia.github.io/simready-foundation/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2026.08.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2026.08.0-post1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -70,8 +70,9 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="2026.08.0" />
+  <meta name="docsearch:version" content="2026.08.0-post1" />
   
     
     <script src="../../../_static/searchtools.js"></script>
@@ -850,12 +851,35 @@
 </div>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>Material prims must be labeled with a non-empty <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> label.</p>
+<p>Visual material prims must be labeled with a non-empty <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> label.</p>
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>For ground-truth material segmentation, every <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim must carry semantic labels under the <code class="docutils literal notranslate"><span class="pre">material</span></code> taxonomy: the <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> schema applied with at least one authored value in <code class="docutils literal notranslate"><span class="pre">semantics:labels:material</span></code> (for example <code class="docutils literal notranslate"><span class="pre">&quot;metal&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;plastic&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;wood&quot;</span></code>).</p>
+<p>For ground-truth material segmentation, every visual <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim must carry semantic labels under the <code class="docutils literal notranslate"><span class="pre">material</span></code> taxonomy: the <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> schema applied with at least one authored value in <code class="docutils literal notranslate"><span class="pre">semantics:labels:material</span></code> (for example <code class="docutils literal notranslate"><span class="pre">&quot;metal&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;plastic&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;wood&quot;</span></code>).</p>
 <p>This is an NVIDIA convention layered on top of the taxonomy-agnostic object labeling (SL.001): object/class labels describe <em>what an object is</em>, while the <code class="docutils literal notranslate"><span class="pre">material</span></code> taxonomy describes <em>what it is made of</em>. The two coexist via the OpenUSD <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI</span></code> “Multiple Apply” schema design.</p>
+<section id="which-materials-this-applies-to">
+<h3>Which materials this applies to<a class="headerlink" href="#which-materials-this-applies-to" title="Link to this heading">#</a></h3>
+<p>A physics material is a <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim as well, so the prim type alone cannot say whether a
+label is expected. Material segmentation describes what a sensor sees, so the requirement
+applies to the materials the asset actually renders with. A material is in scope when all
+three of the following hold:</p>
+<ol class="arabic simple">
+<li><p><strong>It is bound by renderable geometry.</strong> The binding resolves from a <code class="docutils literal notranslate"><span class="pre">Gprim</span></code> — or one of its
+<code class="docutils literal notranslate"><span class="pre">materialBind</span></code> <code class="docutils literal notranslate"><span class="pre">GeomSubsets</span></code> — whose computed purpose is <code class="docutils literal notranslate"><span class="pre">default</span></code> or <code class="docutils literal notranslate"><span class="pre">render</span></code>. <code class="docutils literal notranslate"><span class="pre">proxy</span></code> and
+<code class="docutils literal notranslate"><span class="pre">guide</span></code> geometry does not count, and instanced geometry does: the binding is resolved
+through instance proxies so material bindings inside an <code class="docutils literal notranslate"><span class="pre">instanceable</span></code> reference are seen.</p></li>
+<li><p><strong>The binding is a render-purpose binding.</strong> <code class="docutils literal notranslate"><span class="pre">material:binding</span></code> and its <code class="docutils literal notranslate"><span class="pre">full</span></code> / <code class="docutils literal notranslate"><span class="pre">preview</span></code>
+purposes are consulted; <code class="docutils literal notranslate"><span class="pre">material:binding:physics</span></code> is not.</p></li>
+<li><p><strong>It resolves a shading network.</strong> A render terminal (<code class="docutils literal notranslate"><span class="pre">outputs:surface</span></code>,
+<code class="docutils literal notranslate"><span class="pre">outputs:displacement</span></code> or <code class="docutils literal notranslate"><span class="pre">outputs:volume</span></code>, in the universal context or a
+render-context-qualified form such as <code class="docutils literal notranslate"><span class="pre">outputs:mdl:surface</span></code>) connects to a shading node. A
+material whose terminal is authored but left unconnected is still in scope when a <code class="docutils literal notranslate"><span class="pre">Shader</span></code>
+sits in its namespace; the missing connection is a visual-material defect reported by the
+<a class="reference internal" href="../../visualization/materials/capability-materials.html"><span class="std std-doc">Visual Materials</span></a> capability.</p></li>
+</ol>
+<p>A physics material fails (2) and (3), so it is never asked for a material label. A material
+library that nothing renders with fails (1) and is likewise out of scope.</p>
+</section>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
@@ -866,18 +890,50 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">token[]</span><span class="w"> </span><span class="na">semantics:labels:class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"car"</span><span class="p">,</span><span class="w"> </span><span class="s">"vehicle"</span><span class="p">]</span>
 
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span>Mesh<span class="w"> </span><span class="s">"Body"</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="kt">prepend</span><span class="w"> </span><span class="na">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"MaterialBindingAPI"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Car/Materials/Metal&gt;</span>
+<span class="w">        </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:physics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Car/PhysicsMaterials/Steel&gt;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span>Scope<span class="w"> </span><span class="s">"Materials"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">"Metal"</span><span class="w"> </span><span class="p">(</span>
 <span class="w">            </span><span class="kt">prepend</span><span class="w"> </span><span class="na">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"SemanticsLabelsAPI:material"</span><span class="p">]</span>
 <span class="w">        </span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">token</span><span class="w"> </span><span class="na">outputs:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Car/Materials/Metal/Shader.outputs:surface&gt;</span>
 <span class="w">            </span><span class="kt">token[]</span><span class="w"> </span><span class="na">semantics:labels:material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"metal"</span><span class="p">,</span><span class="w"> </span><span class="s">"shiny"</span><span class="p">]</span>
+
+<span class="w">            </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">"Shader"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k k-Token">uniform</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="na">info:id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"UsdPreviewSurface"</span>
+<span class="w">                </span><span class="kt">token</span><span class="w"> </span><span class="na">outputs:surface</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1"># Valid: a physics material is out of scope. It has no render terminal and is bound</span>
+<span class="w">    </span><span class="c1"># through the physics purpose, so no material label is expected on it.</span>
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span>Scope<span class="w"> </span><span class="s">"PhysicsMaterials"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">"Steel"</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="kt">prepend</span><span class="w"> </span><span class="na">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"PhysicsMaterialAPI"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="na">physics:dynamicFriction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="na">physics:staticFriction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1"># Invalid: Material prim has no SemanticsLabelsAPI:material label</span>
+<span class="c1"># Invalid: a rendered Material prim has no SemanticsLabelsAPI:material label</span>
 <span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">"Metal"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">token</span><span class="w"> </span><span class="na">outputs:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Metal/Shader.outputs:surface&gt;</span>
+
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">"Shader"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k k-Token">uniform</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="na">info:id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"UsdPreviewSurface"</span>
+<span class="w">        </span><span class="kt">token</span><span class="w"> </span><span class="na">outputs:surface</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -920,8 +976,11 @@ the comment is what keeps them legible. See
 <section id="how-to-comply">
 <h2>How to comply<a class="headerlink" href="#how-to-comply" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Apply <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> to each <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim.</p></li>
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">SemanticsLabelsAPI:material</span></code> to each visual <code class="docutils literal notranslate"><span class="pre">Material</span></code> prim.</p></li>
 <li><p>Author at least one value in <code class="docutils literal notranslate"><span class="pre">semantics:labels:material</span></code> describing the material type.</p></li>
+<li><p>Leave physics materials unlabeled. If a physics material is reported, it is bound in the
+render slot (<code class="docutils literal notranslate"><span class="pre">material:binding</span></code> rather than <code class="docutils literal notranslate"><span class="pre">material:binding:physics</span></code>) or carries a
+shading network; fix the binding instead of adding a label.</p></li>
 </ol>
 </section>
 <section id="for-more-information">
@@ -984,7 +1043,10 @@ the comment is what keeps them legible. See
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-materials-this-applies-to">Which materials this applies to</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-it-required">Why is it required?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-comply">How to comply</a></li>
@@ -1007,8 +1069,8 @@ the comment is what keeps them legible. See
   
 
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
 
   <footer class="bd-footer">
