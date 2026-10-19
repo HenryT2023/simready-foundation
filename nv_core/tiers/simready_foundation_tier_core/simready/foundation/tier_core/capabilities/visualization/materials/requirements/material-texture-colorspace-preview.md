@@ -12,9 +12,9 @@ UsdPreviewSurface materials and textures must use correct color space convention
 
 ## Description
 
-A texture holds either a color or data, and the two need opposite treatment: a base color is
-sRGB-encoded and must be decoded, a roughness or normal map holds linear values that must be
-read as authored.
+A texture holds either color or data. Albedo may be sRGB-encoded and require decoding,
+or already linear and require `raw`. Roughness and normal maps hold data that must be
+read as authored. The `diffuseColor` connection alone does not establish image encoding.
 
 A `UsdUVTexture` reads its image through `inputs:file`, which is the same attribute for both.
 The expectation follows from the surface shader input the texture is connected to, through any
@@ -22,7 +22,8 @@ number of intermediate nodes: a normal-map node, a multiply, a node graph interf
 
 | Surface shader input | Expected `inputs:sourceColorSpace` |
 |---|---|
-| `diffuseColor`, `emissiveColor`, `specularColor` | `sRGB` |
+| `diffuseColor` (albedo) | `sRGB` or `raw`, matching the image encoding |
+| `emissiveColor`, `specularColor` | `sRGB` |
 | every other input, including roughness, metallic, occlusion, opacity, normal and displacement | `raw` |
 
 The color space is `inputs:sourceColorSpace`, a typed shader input on `UsdUVTexture` with
@@ -84,7 +85,7 @@ explicitly or the same texture is decoded on one and not the other.
 
 ## Why is it required?
 
-- A base color texture read as linear renders washed out; a normal map read as sRGB bends
+- An sRGB-encoded base color texture incorrectly read as linear renders washed out; a normal map read as sRGB bends
   its directions and the lighting is wrong in a way that looks like bad geometry
 - The defect is invisible in the USD text: both cases are a well-formed material with a
   plausible texture path
@@ -152,7 +153,7 @@ def Material "mtl_bracket"
 }
 ```
 
-### Invalid: a texture reaching `diffuseColor` and declaring `raw`
+### Valid: linear albedo reaching `diffuseColor` and declaring `raw`
 
 ```usd
 def Material "mtl_bracket"
@@ -235,8 +236,8 @@ def Material "mtl_bracket"
 
 1. Decide the signal from the surface input the texture drives, not from the texture's file
    name or from the image node's own inputs.
-2. Author `inputs:sourceColorSpace = "sRGB"` on every texture reaching `diffuseColor`,
-   `emissiveColor` or `specularColor`.
+2. On albedo reaching `diffuseColor`, author `sRGB` for sRGB-encoded images or `raw`
+   for linear images. Continue using `sRGB` for `emissiveColor` and `specularColor`.
 3. Author `inputs:sourceColorSpace = "raw"` on every other texture, unless the file is single
    channel, where `auto` already resolves to `raw`. On a three- or four-channel file `auto`
    decodes, and every value is read low.
@@ -252,7 +253,7 @@ def Material "mtl_bracket"
 | Authored | On a color input | On a data input |
 |---|---|---|
 | `sRGB` | author this | reported |
-| `raw` | reported | author this |
+| `raw` | accepted for `diffuseColor`; reported for emissive/specular color | author this |
 | `auto` | accepted | **reported**, unless the file is single channel |
 | absent | accepted — the attribute defaults to `auto` | **reported**, unless the file is single channel |
 | any other token | reported | reported |
@@ -260,6 +261,9 @@ def Material "mtl_bracket"
 `auto` is accepted on a color input, where the heuristic agrees with convention. On a data
 input it is accepted only for a single-channel file, which the heuristic leaves alone, and
 reported for a file with three or four channels, which it decodes.
+
+A reader shared between albedo and a data input may use `raw`; `sRGB` still fails
+for the data input. This allowance does not change MDL or OpenPBR requirements.
 
 ## Related Requirements
 - [Material Texture Colorspace](/capabilities/visualization/materials/requirements/material-texture-colorspace-mdl)

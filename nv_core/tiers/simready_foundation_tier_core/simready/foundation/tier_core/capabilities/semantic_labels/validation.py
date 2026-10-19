@@ -456,12 +456,34 @@ class SemanticLabelsCapabilityChecker(_SemanticLabelsMixin, BaseRuleChecker):
 class SemanticLabelsMaterialChecker(_SemanticLabelsMixin, BaseRuleChecker):
     """Validates the NVIDIA-specific semantic-label requirements for FET_011_RTX:
 
-    - **SL.MAT.001**: Material prims must carry a non-empty ``SemanticsLabelsAPI:material`` label.
+    - **SL.MAT.001**: visual Material prims must carry a non-empty ``SemanticsLabelsAPI:material``
+      label. A physics material is a ``Material`` prim as well, so scope is decided by whether
+      renderable geometry draws with the material through a render-purpose binding and the
+      material resolves a shading network, not by the prim type.
     - **SL.TIME.001**: semantic label attributes must not contain time samples (any instance).
 
     Registered separately from the STANDARD checker so material labeling and the static-label rule
     are inactive when only FET_011_STANDARD is being validated.
     """
+
+    # Material outputs a renderer evaluates. A render-context-qualified terminal such as
+    # ``outputs:mdl:surface`` ends in the same name, so the context prefix is dropped before
+    # comparing.
+    RENDER_TERMINALS = frozenset({"surface", "displacement", "volume"})
+
+    # Binding purposes that resolve what geometry *renders* with. The physics purpose is
+    # deliberately absent: ``material:binding:physics`` resolves a physics material.
+    RENDER_BIND_PURPOSES = (UsdShade.Tokens.full, UsdShade.Tokens.preview)
+
+    def __init__(self, verbose, consumerLevelChecks, assetLevelChecks):
+        # The engine detects legacy constructors by these exact parameter names.
+        # *args/**kwargs would select parameters=, which the mixin cannot accept.
+        super().__init__(verbose, consumerLevelChecks, assetLevelChecks)
+        self._rendered_material_paths: frozenset | None = None
+
+    def ResetCaches(self):
+        super().ResetCaches()
+        self._rendered_material_paths = None
 
     def CheckPrim(self, prim: Usd.Prim):
         if not self._is_from_default_prim(prim):
@@ -473,9 +495,110 @@ class SemanticLabelsMaterialChecker(_SemanticLabelsMixin, BaseRuleChecker):
         for instance in self._get_semantics_labels_api_instances(prim):
             self._check_static_label_rule(prim, instance)
 
-        # SL.MAT.001: every Material prim must carry a non-empty SemanticsLabelsAPI:material label.
-        if prim.IsA(UsdShade.Material):
+        # SL.MAT.001: every visual Material prim must carry a non-empty
+        # SemanticsLabelsAPI:material label.
+        if prim.IsA(UsdShade.Material) and self._is_visual_material(prim):
             self._check_material_label(prim)
+
+    def _is_visual_material(self, prim: Usd.Prim) -> bool:
+        """Whether SL.MAT.001 applies to this Material prim.
+
+        A physics material is a ``Material`` prim too, so the prim type alone cannot tell the two
+        apart. Three pieces of evidence do, and a visual material carries all of them:
+
+        1. renderable geometry draws with it -- the binding was resolved from a gprim (or one of its
+           material-bind ``GeomSubsets``) whose computed purpose is ``default`` or ``render``, so a
+           proxy-only or physics-only asset renders with no material at all;
+        2. that binding is a render-purpose binding, not ``material:binding:physics``;
+        3. the material resolves a shading network.
+
+        A physics material fails (2) and (3); a material library nothing renders with fails (1).
+        Material-segmentation ground truth only describes what a sensor sees, so a material that is
+        never rendered has nothing to contribute to it.
+        """
+        if prim.GetPath() not in self._rendered_material_paths_for(prim.GetStage()):
+            return False
+        return self._resolves_shading_network(prim)
+
+    def _rendered_material_paths_for(self, stage: Usd.Stage) -> frozenset:
+        """Paths of the materials this stage's renderable geometry draws with, computed once.
+
+        Built lazily rather than in ``CheckStage`` because the framework re-traverses the stage once
+        per variant-set combination and announces each pass only through ``ResetCaches``; deferring
+        the work lets the set follow the variant selection currently composed on the stage.
+        """
+        if self._rendered_material_paths is None:
+            self._rendered_material_paths = self._compute_rendered_material_paths(stage)
+        return self._rendered_material_paths
+
+    def _compute_rendered_material_paths(self, stage: Usd.Stage) -> frozenset:
+        default_prim = stage.GetDefaultPrim()
+        if not default_prim:
+            return frozenset()
+
+        paths: set[Sdf.Path] = set()
+        for prim in self._composed_prim_range(default_prim):
+            if is_omni_path(prim.GetPath()):
+                continue
+            if not self._is_render_or_default_gprim(prim):
+                continue
+            paths.update(self._render_bound_material_paths(prim))
+        return frozenset(paths)
+
+    @classmethod
+    def _render_bound_material_paths(cls, gprim: Usd.Prim) -> list[Sdf.Path]:
+        """Every material a renderable gprim resolves for a render purpose.
+
+        The gprim's own computed material plus one per material-bind ``GeomSubset``, since a mesh
+        can render several materials across its faces and each of them is something the asset
+        renders with.
+        """
+        binding_api = UsdShade.MaterialBindingAPI(gprim)
+        bind_targets = [gprim]
+        bind_targets.extend(subset.GetPrim() for subset in binding_api.GetMaterialBindSubsets() or [])
+
+        paths: list[Sdf.Path] = []
+        for target in bind_targets:
+            for purpose in cls.RENDER_BIND_PURPOSES:
+                material, _ = UsdShade.MaterialBindingAPI(target).ComputeBoundMaterial(materialPurpose=purpose)
+                if material:
+                    paths.append(material.GetPrim().GetPath())
+        return paths
+
+    @classmethod
+    def _resolves_shading_network(cls, prim: Usd.Prim) -> bool:
+        """Whether a Material prim terminates in a shader a renderer would evaluate.
+
+        A visual material connects a render terminal -- ``outputs:surface``,
+        ``outputs:displacement`` or ``outputs:volume``, in the universal context or a
+        render-context-qualified form such as ``outputs:mdl:surface`` -- to a shading node. A
+        physics material has no such terminal and no shader at all.
+
+        A material whose terminal is authored but left unconnected still reads as render intent
+        when a ``Shader`` sits in its namespace: the missing connection is a visual-material defect
+        that the materials capability reports, and it is not a reason to stop expecting a
+        segmentation label here.
+        """
+        material = UsdShade.Material(prim)
+        if not material:
+            return False
+        for output in material.GetOutputs():
+            if output.GetBaseName().split(":")[-1] not in cls.RENDER_TERMINALS:
+                continue
+            if output.HasConnectedSource():
+                return True
+        return any(descendant.IsA(UsdShade.Shader) for descendant in cls._composed_prim_range(prim))
+
+    @staticmethod
+    def _composed_prim_range(root: Usd.Prim) -> Usd.PrimRange:
+        """Traversal of ``root`` that follows instances into their prototypes.
+
+        References and payloads are already composed into the stage, but an ``instanceable``
+        reference hides its contents behind a prototype, so a plain traversal would miss the
+        geometry -- and therefore the material bindings -- of every instanced part of the asset.
+        Unloaded, inactive, and abstract prims stay excluded: they contribute nothing to a render.
+        """
+        return Usd.PrimRange(root, Usd.TraverseInstanceProxies(Usd.PrimDefaultPredicate))
 
     def _check_static_label_rule(self, prim: Usd.Prim, instance_name: str) -> None:
         """SL.TIME.001: semantic label attributes must not have time samples."""
@@ -492,7 +615,10 @@ class SemanticLabelsMaterialChecker(_SemanticLabelsMixin, BaseRuleChecker):
         )
 
     def _check_material_label(self, prim: Usd.Prim) -> None:
-        """SL.MAT.001: a Material prim must have ``SemanticsLabelsAPI:material`` applied with a value.
+        """SL.MAT.001: a visual Material prim must have ``SemanticsLabelsAPI:material`` with a value.
+
+        Callers gate this on :meth:`_is_visual_material`; the check itself assumes the prim is
+        already known to be a material the asset renders with.
 
         The spec requires the schema *applied* with at least one authored value, so the ``material``
         instance must appear in the applied ``apiSchemas`` before the attribute is accepted -- an

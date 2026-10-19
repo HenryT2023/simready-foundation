@@ -50,6 +50,71 @@ NONE
 
 ---
 
+## 2026.08.0-post1 — October 2026
+
+Material and semantic-label validation fixes for Foundation 8.0. This
+post-release corrects false failures for linear albedo and physics-only
+materials, ensures semantic checkers initialize through the validation
+engine, and detects missing authored physics mass units. Existing feature
+and profile version pins are unchanged.
+
+### Breaking changes
+NONE
+
+### Fixed
+* `SL.MAT.001` checks materials used by renderable geometry through render
+  bindings and resolving a shading network. Physics-only materials, unused
+  material libraries, and materials used only by guide or proxy geometry no
+  longer require material-segmentation labels. Inherited bindings,
+  material-bind subsets, and instance proxies are included in the visual
+  material scope.
+* The semantic material checker initializes through the consumer's rule
+  factory and resets its material-scope cache between variant passes.
+  Missing labels and time-sampled labels produce the expected failures in
+  both the validation API and CLI.
+* Linear albedo explicitly declaring `raw` is accepted for UsdPreviewSurface
+  `diffuseColor` (`VM.TEX.003`) and MDL `diffuse_texture` (`VM.TEX.002` and
+  `VM.TEX.005`). A Preview texture shared by albedo and data inputs can use
+  `raw`. Normal/data texture checks, other color inputs, OpenPBR checks, and
+  invalid color-space token diagnostics retain their existing behavior.
+* `UN.003` now checks whether `kilogramsPerUnit` is authored when physics
+  objects are present. The OpenUSD getter's default value of `1.0` no longer
+  hides missing stage metadata.
+
+### Added
+* Regression tests for linear albedo, visual-only material semantics,
+  material-scope cache resets, authored mass units, and initialization of
+  every Core checker through the consumer's rule factory.
+* Installed-wheel API and CLI tests for missing, time-sampled, and static
+  material labels using the stock `Robotics-Prop@3.2.0` profile.
+
+### Changed
+* Material color-space requirements, RTX material-label feature guidance,
+  and the semantic-label workflow now describe the corrected scope and
+  albedo encoding behavior. The materials index includes the per-family
+  color-space pages.
+* Package versions in this release are listed below. Post-release
+  numbers can differ between packages within the Foundation 8.0 line.
+
+| Package | Version |
+|---|---|
+| `simready-foundation-tier-core` | `2026.8.0.post1` |
+| `simready-foundation-tier-aif` | `2026.8.0` |
+| `simready-foundation-tier-sensors` | `2026.8.0` |
+
+`VERSION.md` and the release tag identify this repository snapshot as
+`2026.08.0-post1`. The 8.0 SimReady libraries (`simready-validate`,
+`simready-benchmark`, `simready-package`, etc.) remain backward-compatible
+with earlier Foundation releases, including 6.0 and 7.1.
+
+### Deprecated
+NONE
+
+### Removed
+NONE
+
+---
+
 ## 2026.08.0 — September 2026
 
 Visual materials, sensors, and AI Factory release. Foundation 8.0 adds the

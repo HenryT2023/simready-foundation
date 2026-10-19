@@ -58,6 +58,8 @@ one must declare it explicitly.
       — values are in linear (same as display colors): `0.18` is mid grey
     - with textures:
       - color space is defined by `inputs:sourceColorSpace` on `UsdUVTexture` nodes.
+      - albedo (`diffuseColor`) accepts explicit `raw` for linear images or `sRGB` for
+        sRGB-encoded images; emissive/specular color checks remain unchanged.
       - its default value is `auto`, which resolves to `sRGB` for any 8-bit texture with 3 or
         4 channels. Bit depth and channel count decide this, not the file format: an 8-bit RGB
         TIFF or TGA decodes exactly as a PNG does, while a 16-bit PNG, an EXR or a
@@ -107,6 +109,8 @@ one must declare it explicitly.
         and only the log is. hdStorm accepts `none` without complaint
       - Note: A value of `128` in 8-bit textures equates to mid roughness/opacity etc
 - **MDL / OmniPBR** — `VM.TEX.002`.
+  - albedo on `diffuse_texture` accepts explicit `raw` for linear images or `sRGB`
+    for sRGB-encoded images under both `VM.TEX.002` and `VM.TEX.005`.
   - color inputs — `diffuse_texture`, `emissive_color_texture`
     - without textures (`diffuse_color_constant`):
       — values are in linear (same as display colors): `0.18` is mid grey

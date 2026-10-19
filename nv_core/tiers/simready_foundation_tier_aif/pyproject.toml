@@ -15,7 +15,7 @@
 
 [project]
 name = "simready-foundation-tier-aif"
-version = "2026.8.0-rc2"
+version = "2026.8.0"
 description = "SimReady AI Factory (AIF) tier: AIF core metadata, connection points (v0.1.0 geometry + v0.2.0 property vocabulary, coexisting), thermal cooling, and electrical capabilities/features, and the aif-entity profile"
 authors = [
     {name = "NVIDIA"},

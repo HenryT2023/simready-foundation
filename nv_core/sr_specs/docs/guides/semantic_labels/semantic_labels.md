@@ -110,7 +110,7 @@ name into the value is the most common authoring error. See
 | [`SL.002`](../../capabilities/semantic_labels/requirements/semantic-label-deprecated-schema.md) | A deprecated `SemanticsAPI` label has been migrated to `SemanticsLabelsAPI`. | Only on prims that still carry legacy labels |
 | [`SL.003`](../../capabilities/semantic_labels/requirements/semantic-label-schema.md) | Labels use the `SemanticsLabelsAPI` schema. | Always |
 | [`SL.TIME.001`](../../capabilities/semantic_labels/requirements/semantic-label-time.md) | Labels have no time samples. | RTX perception pipelines |
-| [`SL.MAT.001`](../../capabilities/semantic_labels/requirements/semantic-label-material.md) | Each `Material` prim has a non-empty `SemanticsLabelsAPI:material` label. | NVIDIA convention |
+| [`SL.MAT.001`](../../capabilities/semantic_labels/requirements/semantic-label-material.md) | Each visual `Material` prim has a non-empty `SemanticsLabelsAPI:material` label. Physics materials are out of scope. | NVIDIA convention |
 | [`SL.QCODE.001`](../../capabilities/semantic_labels/requirements/semantic-label-qcode-valid.md) | Wikidata Q-codes are well-formed: `Q` followed by digits. | Opt-in, Wikidata only |
 
 Applying the schema without authoring a value does not satisfy `SL.001`: an
@@ -265,7 +265,7 @@ Object labels answer *what is this*. Material labels answer *what is it made
 of*. Because they answer different questions they use different taxonomy
 instance names and live side by side on the same asset.
 
-`SL.MAT.001` asks that every `Material` prim has a non-empty
+`SL.MAT.001` asks that every *visual* `Material` prim has a non-empty
 `SemanticsLabelsAPI:material` label:
 
 ```python
@@ -287,6 +287,14 @@ for prim in stage.Traverse():
 
 stage.GetRootLayer().Save()
 ```
+
+A physics material is a `Material` prim too, so keying on the prim type alone
+would label both kinds. The rule asks only for the materials a sensor can see: a
+material is in scope when renderable geometry (a `Gprim` or `materialBind`
+`GeomSubset` at `default` or `render` purpose) binds it through a render purpose,
+and the material resolves a shading network. A physics material is bound through
+`material:binding:physics` and has no render terminal, so it is skipped, and so
+is a material library nothing renders with.
 
 Both taxonomies then sit on the asset without conflicting:
 

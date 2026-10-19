@@ -51,10 +51,8 @@ class KilogramsPerUnitChecker(usd_validation_nvidia.BaseRuleChecker):
             # No physics objects, so kilogramsPerUnit is not required
             return
 
-        # Get the stage kilogramsPerUnit
-        kilograms_per_unit = UsdPhysics.GetStageKilogramsPerUnit(stage)
-
-        if kilograms_per_unit is None:
+        # The getter falls back to 1.0 when no metadata was authored.
+        if not UsdPhysics.StageHasAuthoredKilogramsPerUnit(stage):
             self._AddFailedCheck(
                 requirement=cap.UnitsRequirements.UN_003,
                 message="Stage has physics objects but no kilogramsPerUnit specified.",

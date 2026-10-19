@@ -1558,6 +1558,12 @@ class VisualMaterialsCapabilityChecker(BaseRuleChecker):
                 errors.append(f"Unrecognised color space for {attr_name}: {authored}")
                 continue
 
+            # Albedo may already contain linear values. The input name alone
+            # cannot establish the image encoding. Share this allowance between
+            # VM.TEX.002 and VM.TEX.005; all data and other color checks remain.
+            if attr_name == "inputs:diffuse_texture" and actual == self.colorspace_linear_canonical:
+                continue
+
             if attr_name in self.colorspace_srgb_list:
                 expected = self.colorspace_srgb_canonical
             else:
@@ -1784,10 +1790,9 @@ class VisualMaterialsCapabilityChecker(BaseRuleChecker):
                     if name not in entry[2]:
                         entry[2].append(name)
 
-        # A texture that keys twice reaches a color input and a data one, so the two
-        # demands ask for different encodings and no single value satisfies both. Those
-        # findings stand as they are but carry no repair: writing what either demand
-        # asks for would break the other.
+        # A texture that keys twice reaches a color input and a data one. Suppress
+        # automatic repairs conservatively for shared readers. Preview albedo permits
+        # raw alongside data, but other color uses can still require sRGB.
         expectations = {}
         for path, expected in demands:
             expectations.setdefault(path, set()).add(expected)
@@ -1888,6 +1893,17 @@ class VisualMaterialsCapabilityChecker(BaseRuleChecker):
                 requirement=cap.MaterialsRequirements.VM_TEX_003,
             )
             errors.append(f"Unrecognised color space for {reader_path}: {authored}")
+            return errors
+
+        # Albedo can be authored in linear/raw encoding. USD cannot infer the
+        # image's encoding from its diffuseColor connection. Keep this allowance
+        # local to Preview Surface albedo: other colors, data and OpenPBR retain
+        # their existing checks, including illegal-token diagnostics above.
+        if (
+            actual == self.colorspace_linear_canonical
+            and is_color
+            and set(surface_inputs) == {"diffuseColor"}
+        ):
             return errors
 
         if actual != expected:

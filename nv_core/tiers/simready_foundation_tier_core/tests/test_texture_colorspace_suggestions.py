@@ -76,12 +76,12 @@ def _tex003_issues(stage: Usd.Stage) -> list:
 
 
 def test_wrong_colorspace_on_a_color_texture_is_reported_with_a_fix():
-    """A data encoding on a texture feeding diffuseColor fails, and the finding fixes it."""
-    stage = _stage_with_diffuse_texture("raw")
+    """An illegal encoding token on diffuseColor fails, and the finding fixes it."""
+    stage = _stage_with_diffuse_texture("linear")
 
     issues = _tex003_issues(stage)
 
-    assert issues, "a 'raw' texture feeding diffuseColor must fail VM.TEX.003"
+    assert issues, "an illegal 'linear' sourceColorSpace must fail VM.TEX.003"
     assert any(issue.suggestion is not None for issue in issues), (
         "the failure must offer a Suggestion so a consumer can apply the repair"
     )
@@ -89,7 +89,7 @@ def test_wrong_colorspace_on_a_color_texture_is_reported_with_a_fix():
 
 def test_applying_the_suggestion_makes_the_stage_pass():
     """Calling the Suggestion's callable authors the color space the check expects."""
-    stage = _stage_with_diffuse_texture("raw")
+    stage = _stage_with_diffuse_texture("linear")
 
     issue = next(issue for issue in _tex003_issues(stage) if issue.suggestion is not None)
     reader_prim = stage.GetPrimAtPath(READER_PATH)

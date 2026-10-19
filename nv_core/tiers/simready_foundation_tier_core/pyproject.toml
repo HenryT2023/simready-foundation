@@ -15,7 +15,7 @@
 
 [project]
 name = "simready-foundation-tier-core"
-version = "2026.8.0-rc5"
+version = "2026.08.0-post1"
 description = "SimReady Foundation base tier: the foundation profiles, features, requirements, and validators, including the Isaac Sim capabilities and the isaac features/profiles"
 authors = [
     {name = "NVIDIA"},

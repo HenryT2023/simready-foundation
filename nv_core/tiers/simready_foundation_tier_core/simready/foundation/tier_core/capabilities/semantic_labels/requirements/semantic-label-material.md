@@ -8,13 +8,36 @@
 
 ## Summary
 
-Material prims must be labeled with a non-empty `SemanticsLabelsAPI:material` label.
+Visual material prims must be labeled with a non-empty `SemanticsLabelsAPI:material` label.
 
 ## Description
 
-For ground-truth material segmentation, every `Material` prim must carry semantic labels under the `material` taxonomy: the `SemanticsLabelsAPI:material` schema applied with at least one authored value in `semantics:labels:material` (for example `"metal"`, `"plastic"`, `"wood"`).
+For ground-truth material segmentation, every visual `Material` prim must carry semantic labels under the `material` taxonomy: the `SemanticsLabelsAPI:material` schema applied with at least one authored value in `semantics:labels:material` (for example `"metal"`, `"plastic"`, `"wood"`).
 
 This is an NVIDIA convention layered on top of the taxonomy-agnostic object labeling (SL.001): object/class labels describe *what an object is*, while the `material` taxonomy describes *what it is made of*. The two coexist via the OpenUSD `SemanticsLabelsAPI` "Multiple Apply" schema design.
+
+### Which materials this applies to
+
+A physics material is a `Material` prim as well, so the prim type alone cannot say whether a
+label is expected. Material segmentation describes what a sensor sees, so the requirement
+applies to the materials the asset actually renders with. A material is in scope when all
+three of the following hold:
+
+1. **It is bound by renderable geometry.** The binding resolves from a `Gprim` — or one of its
+   `materialBind` `GeomSubsets` — whose computed purpose is `default` or `render`. `proxy` and
+   `guide` geometry does not count, and instanced geometry does: the binding is resolved
+   through instance proxies so material bindings inside an `instanceable` reference are seen.
+2. **The binding is a render-purpose binding.** `material:binding` and its `full` / `preview`
+   purposes are consulted; `material:binding:physics` is not.
+3. **It resolves a shading network.** A render terminal (`outputs:surface`,
+   `outputs:displacement` or `outputs:volume`, in the universal context or a
+   render-context-qualified form such as `outputs:mdl:surface`) connects to a shading node. A
+   material whose terminal is authored but left unconnected is still in scope when a `Shader`
+   sits in its namespace; the missing connection is a visual-material defect reported by the
+   [Visual Materials](../../visualization/materials/capability-materials.md) capability.
+
+A physics material fails (2) and (3), so it is never asked for a material label. A material
+library that nothing renders with fails (1) and is likewise out of scope.
 
 ## Examples
 
@@ -26,18 +49,50 @@ def Xform "Car" (
 {
     token[] semantics:labels:class = ["car", "vehicle"]
 
+    def Mesh "Body" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Car/Materials/Metal>
+        rel material:binding:physics = </Car/PhysicsMaterials/Steel>
+    }
+
     def Scope "Materials" {
         def Material "Metal" (
             prepend apiSchemas = ["SemanticsLabelsAPI:material"]
         )
         {
+            token outputs:surface.connect = </Car/Materials/Metal/Shader.outputs:surface>
             token[] semantics:labels:material = ["metal", "shiny"]
+
+            def Shader "Shader" {
+                uniform token info:id = "UsdPreviewSurface"
+                token outputs:surface
+            }
+        }
+    }
+
+    # Valid: a physics material is out of scope. It has no render terminal and is bound
+    # through the physics purpose, so no material label is expected on it.
+    def Scope "PhysicsMaterials" {
+        def Material "Steel" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.6
+            float physics:staticFriction = 0.8
         }
     }
 }
 
-# Invalid: Material prim has no SemanticsLabelsAPI:material label
+# Invalid: a rendered Material prim has no SemanticsLabelsAPI:material label
 def Material "Metal" {
+    token outputs:surface.connect = </Metal/Shader.outputs:surface>
+
+    def Shader "Shader" {
+        uniform token info:id = "UsdPreviewSurface"
+        token outputs:surface
+    }
 }
 ```
 
@@ -79,8 +134,11 @@ the comment is what keeps them legible. See
 
 ## How to comply
 
-1. Apply `SemanticsLabelsAPI:material` to each `Material` prim.
+1. Apply `SemanticsLabelsAPI:material` to each visual `Material` prim.
 2. Author at least one value in `semantics:labels:material` describing the material type.
+3. Leave physics materials unlabeled. If a physics material is reported, it is bound in the
+   render slot (`material:binding` rather than `material:binding:physics`) or carries a
+   shading network; fix the binding instead of adding a label.
 
 ## For More Information
 

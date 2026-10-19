@@ -11,10 +11,17 @@
 
 This feature adds the NVIDIA RTX semantic-label conventions on top of the
 Standard semantic-label contract. An asset that satisfies this feature carries a
-non-empty `SemanticsLabelsAPI:material` label on every `UsdShade.Material` prim,
-so RTX sensor and perception workflows can produce material-segmentation ground
-truth in addition to object/class ground truth, and it keeps every semantic label
-static.
+non-empty `SemanticsLabelsAPI:material` label on every visual `UsdShade.Material`
+prim, so RTX sensor and perception workflows can produce material-segmentation
+ground truth in addition to object/class ground truth, and it keeps every semantic
+label static.
+
+Material segmentation describes what a sensor sees, so `SL.MAT.001` asks for a
+label only on the materials the asset renders with: those bound by renderable
+geometry through a render purpose and resolving a shading network. A physics
+material is a `Material` prim too and is out of scope. See
+[`SL.MAT.001`](../capabilities/semantic_labels/requirements/semantic-label-material.md)
+for the exact scope.
 
 Object labels describe what a thing is; the `material` taxonomy describes what it
 is made of. Both coexist on the same asset through the `SemanticsLabelsAPI`
@@ -85,7 +92,7 @@ This version is used in the following profiles:
 Source file type:
 
 - `.usd`, `.usda`, `.usdc`
-  - Author `SemanticsLabelsAPI:material` and `semantics:labels:material` on each `UsdShade.Material` prim, with no time samples on any label attribute.
+  - Author `SemanticsLabelsAPI:material` and `semantics:labels:material` on each visual `UsdShade.Material` prim, with no time samples on any label attribute.
 
 Validation or runtime pipeline:
 
